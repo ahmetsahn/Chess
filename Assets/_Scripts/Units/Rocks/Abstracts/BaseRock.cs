@@ -3,7 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
 using System.Linq;
-
+using System.Collections.Generic;
 
 public abstract class BaseRock : MonoBehaviour
 {
@@ -186,6 +186,11 @@ public abstract class BaseRock : MonoBehaviour
         return GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == false);
     }
 
+    protected bool IsTheNodeInTheNodeList(Vector2 pos)
+    {
+        return GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos);
+    }
+
     protected void GetMarkNode(Vector2 pos)
     {
         var mark = MarkPool.Instance.Get();
@@ -193,10 +198,10 @@ public abstract class BaseRock : MonoBehaviour
         mark.gameObject.SetActive(true);
     }
 
-    protected void AddFakeMarkToList(Vector2 position)
+    protected void AddFakeMarkToList(Vector2 position,List<FakeMark> list)
     {
         var fakeMark = FakeMarkPool.Instance.Get();
-        GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
+        list.Add(fakeMark);
         fakeMark.transform.position = position;
         fakeMark.gameObject.SetActive(true);
     }

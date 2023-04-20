@@ -202,13 +202,13 @@ public class Queen : BaseRock
             {
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -221,13 +221,13 @@ public class Queen : BaseRock
             {
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -240,13 +240,13 @@ public class Queen : BaseRock
             {
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -260,13 +260,13 @@ public class Queen : BaseRock
             {
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -279,13 +279,13 @@ public class Queen : BaseRock
             {
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -299,13 +299,13 @@ public class Queen : BaseRock
             {
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -318,13 +318,13 @@ public class Queen : BaseRock
             {
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -338,13 +338,13 @@ public class Queen : BaseRock
             {
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
                 if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos);
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -704,12 +704,7 @@ public class Queen : BaseRock
         }
     }
 
-  //      if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 1, transform.position.y + 2)))
-  //      {
-  //          var mark = MarkPool.Instance.Get();
-  //          mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y + 2);
-  //          mark.gameObject.SetActive(true);
-  //      }
+  
 
 public override void DetermineShahStateMove()
     {
@@ -833,110 +828,109 @@ public override void DetermineShahStateMove()
     {
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x + i, transform.position.y);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y)))
+            if (IsNodeOccupied(pos, true)) break;
+         
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + i, transform.position.y);
-                mark.gameObject.SetActive(true);
-                
+                GetMarkNode(pos);
             }
 
         }
 
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x - i, transform.position.y);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - i, transform.position.y);
-                mark.gameObject.SetActive(true);
-                
+                GetMarkNode(pos);
             }
+
         }
 
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x, transform.position.y + i);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x, transform.position.y + i)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y + i);
-                mark.gameObject.SetActive(true);
-                
+                GetMarkNode(pos);
             }
+
         }
-
-        for (int i = 1; i < 8; i++)
-        {
-            
-
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x, transform.position.y - i)))
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y - i);
-                mark.gameObject.SetActive(true);
-                
-            }
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            
-
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y + i)))
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + i, transform.position.y + i);
-                mark.gameObject.SetActive(true);
-                
-            }
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            
-
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y - i)))
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - i, transform.position.y - i);
-                mark.gameObject.SetActive(true);
-                
-            }
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            
-
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y - i)))
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + i, transform.position.y - i);
-                mark.gameObject.SetActive(true);
-                
-            }
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            
-
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y + i)))
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - i, transform.position.y + i);
-                mark.gameObject.SetActive(true);
-                
-            }
-        }
-
         
+        for (int i = 1; i < 8; i++)
+        {
+            var pos = new Vector2(transform.position.x, transform.position.y - i);
+
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
+            {
+                GetMarkNode(pos);
+            }
+
+        }
+
+        for (int i = 1; i < 8; i++)
+        {
+            var pos = new Vector2(transform.position.x + i, transform.position.y + i);
+
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
+            {
+                GetMarkNode(pos);
+            }
+
+        }
+
+        for (int i = 1; i < 8; i++)
+        {
+            var pos = new Vector2(transform.position.x - i, transform.position.y - i);
+
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
+            {
+                GetMarkNode(pos);
+            }
+
+        }
+
+        for (int i = 1; i < 8; i++)
+        {
+            var pos = new Vector2(transform.position.x + i, transform.position.y - i);
+
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
+            {
+                GetMarkNode(pos);
+            }
+
+        }
+
+        for (int i = 1; i < 8; i++)
+        {
+            var pos = new Vector2(transform.position.x - i, transform.position.y + i);
+
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
+            {
+                GetMarkNode(pos);
+            }
+
+        }
+
+
     }
 
 
