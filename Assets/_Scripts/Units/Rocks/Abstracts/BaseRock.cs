@@ -171,6 +171,38 @@ public abstract class BaseRock : MonoBehaviour
         }
     }
 
+    protected bool IsNodeOccupied(Vector2 pos, bool isSameColor)
+    {
+        var node = GameManager.Instance.nodesList.FirstOrDefault(x => x.pos == pos && x.isOccupied == true);
+        if (node == null)
+            return false;
+
+        var rock = node.GetComponentInChildren<BaseRock>();
+        return isSameColor ? rock.rockColor == rockColor : rock.rockColor != rockColor;
+    }
+
+    protected bool IsNodeEmpty(Vector2 pos)
+    {
+        return GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == false);
+    }
+
+    protected void GetMarkNode(Vector2 pos)
+    {
+        var mark = MarkPool.Instance.Get();
+        mark.transform.position = pos;
+        mark.gameObject.SetActive(true);
+    }
+
+    protected void AddFakeMarkToList(Vector2 position)
+    {
+        var fakeMark = FakeMarkPool.Instance.Get();
+        GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
+        fakeMark.transform.position = position;
+        fakeMark.gameObject.SetActive(true);
+    }
+
+
+
     public void Die()
     {
         gameObject.SetActive(false);

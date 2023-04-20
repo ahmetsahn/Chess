@@ -8,9 +8,6 @@ using UnityEngine;
 public class Mark : BaseMark
 {
 
-    
-
-
     protected override void OnMouseDown()
     {
         base.OnMouseDown();
