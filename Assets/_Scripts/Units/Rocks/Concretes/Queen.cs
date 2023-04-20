@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Queen : BaseRock
 {
@@ -780,11 +781,18 @@ public class Queen : BaseRock
         }
     }
 
-    public override void DetermineShahStateMove()
+  //      if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 1, transform.position.y + 2)))
+  //      {
+  //          var mark = MarkPool.Instance.Get();
+  //          mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y + 2);
+  //          mark.gameObject.SetActive(true);
+  //      }
+
+public override void DetermineShahStateMove()
     {
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y)))
             {
@@ -799,7 +807,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y)))
             {
@@ -813,8 +821,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + i) && x.isOccupied == true)) break;
-
+            
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x, transform.position.y + i)))
             {
                 var fakeMark = FakeMarkPool.Instance.Get();
@@ -827,7 +834,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - i) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x, transform.position.y - i)))
             {
@@ -841,7 +848,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y + i) && x.isOccupied == true)) break;
+           
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y + i)))
             {
@@ -855,7 +862,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y - i) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y - i)))
             {
@@ -869,7 +876,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y - i) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y - i)))
             {
@@ -883,7 +890,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y + i) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y + i)))
             {
@@ -903,7 +910,7 @@ public class Queen : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y)))
             {
@@ -917,7 +924,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y)))
             {
@@ -930,7 +937,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + i) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x, transform.position.y + i)))
             {
@@ -943,7 +950,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - i) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x, transform.position.y - i)))
             {
@@ -956,7 +963,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y + i) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y + i)))
             {
@@ -969,7 +976,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y - i) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y - i)))
             {
@@ -982,7 +989,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y - i) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y - i)))
             {
@@ -995,7 +1002,7 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y + i) && x.isOccupied == true)) break;
+            
 
             if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y + i)))
             {
