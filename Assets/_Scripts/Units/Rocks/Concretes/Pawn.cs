@@ -75,128 +75,94 @@ public class Pawn : BaseRock
 
     void BackMoveControlForStartPos()
     {
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - 1) && x.isOccupied == false))
+
+        var pos = new Vector2(transform.position.x, transform.position.y - 1);
+        var pos2 = new Vector2(transform.position.x, transform.position.y - 2);
+
+        if (IsNodeEmpty(pos))
         {
-
-            var mark = MarkPool.Instance.Get();
-            mark.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-            mark.gameObject.SetActive(true);
-
-
-
+            GetMarkNode(pos);
+        }
+        
+        if(IsNodeEmpty(pos2))
+            GetMarkNode(pos2);
         }
 
-
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - 2) && x.isOccupied == false))
-        {
-
-            var mark = MarkPool.Instance.Get();
-            mark.transform.position = new Vector2(transform.position.x, transform.position.y - 2);
-            mark.gameObject.SetActive(true);
-
-
-
-        }
-    }
+    
 
     private void BackMoveControlForNotStartPos()
     {
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - 1) && x.isOccupied == false))
-        {
+        var pos = new Vector2(transform.position.x, transform.position.y - 1);
 
-            var mark = MarkPool.Instance.Get();
-            mark.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-            mark.gameObject.SetActive(true);
+        if (IsNodeEmpty(pos))
+        {
+            GetMarkNode(pos);
         }
     }
 
     private void BackLeftCrossMoveControl()
     {
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y - 1) && x.isOccupied == true
-                    && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+        var pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
+
+        if (IsNodeOccupied(pos, false))
         {
-
-            var mark = MarkPool.Instance.Get();
-            mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 1);
-            mark.gameObject.SetActive(true);
-
-
-
+            GetMarkNode(pos);
         }
     }
 
     private void BackRightCrossMoveControl()
     {
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y - 1) && x.isOccupied == true
-                    && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+        var pos = new Vector2(transform.position.x + 1, transform.position.y - 1);
+
+        if (IsNodeOccupied(pos, false))
         {
-
-            var mark = MarkPool.Instance.Get();
-            mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y - 1);
-            mark.gameObject.SetActive(true);
-
-
+            GetMarkNode(pos);
         }
+    }
+
+
+    private void ForwardMoveControlForStartPos()
+    {
+        var pos = new Vector2(transform.position.x, transform.position.y + 1);
+        var pos2 = new Vector2(transform.position.x, transform.position.y + 2);
+
+        if (IsNodeEmpty(pos))
+        {
+            GetMarkNode(pos);
+        }
+
+        if (IsNodeEmpty(pos2))
+            GetMarkNode(pos2);
     }
 
     private void ForwardMoveControlForNotStartPos()
     {
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + 1) && x.isOccupied == false))
+        var pos = new Vector2(transform.position.x, transform.position.y + 1);
+
+        if (IsNodeEmpty(pos))
         {
-
-            var mark = MarkPool.Instance.Get();
-            mark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-            mark.gameObject.SetActive(true);
-
-
+            GetMarkNode(pos);
         }
     }
-
-    private void ForwardMoveControlForStartPos()
-    {
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + 1) && x.isOccupied == false))
-        {
-
-            var mark = MarkPool.Instance.Get();
-            mark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-            mark.gameObject.SetActive(true);
-
-        }
-
-
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + 2) && x.isOccupied == false))
-        {
-
-            var mark = MarkPool.Instance.Get();
-            mark.transform.position = new Vector2(transform.position.x, transform.position.y + 2);
-            mark.gameObject.SetActive(true);
-
-        }
-    }
+    
 
     private void ForwardLeftCrossMoveControl()
     {
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y + 1) && x.isOccupied == true
-                    && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+        var pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
+
+        if (IsNodeOccupied(pos, false))
         {
-
-            var mark = MarkPool.Instance.Get();
-            mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y + 1);
-            mark.gameObject.SetActive(true);
-
+            GetMarkNode(pos);
         }
     }
 
     private void ForwardRightCrossMoveControl()
     {
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y + 1) && x.isOccupied == true
-                    && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+        var pos = new Vector2(transform.position.x + 1, transform.position.y + 1);
+
+        if (IsNodeOccupied(pos, false))
         {
-
-            var mark = MarkPool.Instance.Get();
-            mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y + 1);
-            mark.gameObject.SetActive(true);
-
+            GetMarkNode(pos);
         }
     }
 
@@ -204,8 +170,7 @@ public class Pawn : BaseRock
     {
         if(rockColor == RockColor.White)
         {
-           
-
+       
             if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y + 1)))
             {
                 var fakeMark = FakeMarkPool.Instance.Get();

@@ -26,32 +26,23 @@ public class Bishoop : BaseRock
 
     private void BackLeftCrossMoveControl()
     {
-        
+
 
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y - i) && x.isOccupied == true
-            && x.GetComponentInChildren<BaseRock>().rockColor == rockColor)) break;
+            var pos = new Vector2(transform.position.x - i, transform.position.y - i);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y - i) && x.isOccupied == true
-            && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+            if (IsNodeOccupied(pos, true))
+                break;
+
+            if (IsNodeOccupied(pos, false))
             {
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - i, transform.position.y - i);
-                mark.gameObject.SetActive(true);
-
+                GetMarkNode(pos);
                 break;
             }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y - i) && x.isOccupied == false))
-            {
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - i, transform.position.y - i);
-                mark.gameObject.SetActive(true);
-
-            }
+            if (IsNodeEmpty(pos))
+                GetMarkNode(pos);
         }
     }
 
@@ -59,30 +50,19 @@ public class Bishoop : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
+            var pos = new Vector2(transform.position.x + i, transform.position.y - i);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y - i) && x.isOccupied == true
-            && x.GetComponentInChildren<BaseRock>().rockColor == rockColor)) break;
+            if (IsNodeOccupied(pos, true))
+                break;
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y - i) && x.isOccupied == true
-            && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+            if (IsNodeOccupied(pos, false))
             {
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + i, transform.position.y - i);
-                mark.gameObject.SetActive(true);
-
+                GetMarkNode(pos);
                 break;
             }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y - i) && x.isOccupied == false))
-            {
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + i, transform.position.y - i);
-                mark.gameObject.SetActive(true);
-
-
-            }
+            if (IsNodeEmpty(pos))
+                GetMarkNode(pos);
         }
     }
 
@@ -90,29 +70,19 @@ public class Bishoop : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y + i) && x.isOccupied == true
-            && x.GetComponentInChildren<BaseRock>().rockColor == rockColor)) break;
+            var pos = new Vector2(transform.position.x - i, transform.position.y + i);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y + i) && x.isOccupied == true
-            && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+            if (IsNodeOccupied(pos, true))
+                break;
+
+            if (IsNodeOccupied(pos, false))
             {
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - i, transform.position.y + i);
-                mark.gameObject.SetActive(true);
-
-
-
+                GetMarkNode(pos);
                 break;
             }
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y + i) && x.isOccupied == false))
-            {
 
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - i, transform.position.y + i);
-                mark.gameObject.SetActive(true);
-
-            }
+            if (IsNodeEmpty(pos))
+                GetMarkNode(pos);
         }
     }
 
@@ -120,25 +90,19 @@ public class Bishoop : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y + i) && x.isOccupied == true
-            && x.GetComponentInChildren<BaseRock>().rockColor == rockColor)) break;
+            var pos = new Vector2(transform.position.x + i, transform.position.y + i);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y + i) && x.isOccupied == true
-            && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+            if (IsNodeOccupied(pos, true))
+                break;
+
+            if (IsNodeOccupied(pos, false))
             {
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + i, transform.position.y + i);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
                 break;
             }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y + i) && x.isOccupied == false))
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + i, transform.position.y + i);
-                mark.gameObject.SetActive(true);
-            }
+            if (IsNodeEmpty(pos))
+                GetMarkNode(pos);
         }
     }
 

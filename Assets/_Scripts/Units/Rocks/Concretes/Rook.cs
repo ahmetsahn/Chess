@@ -39,25 +39,19 @@ public class Rook : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - i) && x.isOccupied == true
-                && x.GetComponentInChildren<BaseRock>().rockColor == rockColor)) break;
+            var pos = new Vector2(transform.position.x, transform.position.y - i);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - i) && x.isOccupied == true
-                && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+            if (IsNodeOccupied(pos, true))
+                break;
+
+            if (IsNodeOccupied(pos, false))
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y - i);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
                 break;
             }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - i) && x.isOccupied == false))
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y - i);
-                mark.gameObject.SetActive(true);
-            }
-
+            if (IsNodeEmpty(pos))
+                GetMarkNode(pos);
         }
     }
 
@@ -65,31 +59,19 @@ public class Rook : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + i) && x.isOccupied == true
-                && x.GetComponentInChildren<BaseRock>().rockColor == rockColor)) break;
+            var pos = new Vector2(transform.position.x, transform.position.y + i);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + i) && x.isOccupied == true
-                && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+            if (IsNodeOccupied(pos, true))
+                break;
+
+            if (IsNodeOccupied(pos, false))
             {
-
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y + i);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
                 break;
             }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + i) && x.isOccupied == false))
-            {
-
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y + i);
-                mark.gameObject.SetActive(true);
-
-            }
-
-
+            if (IsNodeEmpty(pos))
+                GetMarkNode(pos);
         }
     }
 
@@ -97,31 +79,19 @@ public class Rook : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y) && x.isOccupied == true
-                && x.GetComponentInChildren<BaseRock>().rockColor == rockColor)) break;
+            var pos = new Vector2(transform.position.x - i, transform.position.y);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y) && x.isOccupied == true
-                && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+            if (IsNodeOccupied(pos, true))
+                break;
+
+            if (IsNodeOccupied(pos, false))
             {
-
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - i, transform.position.y);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
                 break;
             }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i, transform.position.y) && x.isOccupied == false))
-            {
-
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - i, transform.position.y);
-                mark.gameObject.SetActive(true);
-
-            }
-
-
+            if (IsNodeEmpty(pos))
+                GetMarkNode(pos);
         }
     }
 
@@ -129,28 +99,19 @@ public class Rook : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y) && x.isOccupied == true
-                && x.GetComponentInChildren<BaseRock>().rockColor == rockColor)) break;
+            var pos = new Vector2(transform.position.x + i, transform.position.y);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y) && x.isOccupied == true
-                && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+            if (IsNodeOccupied(pos, true))
+                break;
+
+            if (IsNodeOccupied(pos, false))
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + i, transform.position.y);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
                 break;
             }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y) && x.isOccupied == false))
-            {
-
-
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + i, transform.position.y);
-                mark.gameObject.SetActive(true);
-            }
-
-
+            if (IsNodeEmpty(pos))
+                GetMarkNode(pos);
         }
     }
 
