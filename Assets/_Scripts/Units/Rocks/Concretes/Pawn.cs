@@ -170,129 +170,41 @@ public class Pawn : BaseRock
     {
         if(rockColor == RockColor.White)
         {
-       
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y + 1)))
-            {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
-                fakeMark.transform.position = new Vector2(transform.position.x + 1, transform.position.y + 1);
-                fakeMark.gameObject.SetActive(true);
-            }
+            var pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
+            var pos2 = new Vector2(transform.position.x + 1, transform.position.y + 1);
 
             if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y + 1)))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
-                fakeMark.transform.position = new Vector2(transform.position.x - 1, transform.position.y + 1);
-                fakeMark.gameObject.SetActive(true);
+                AddFakeMarkToList(pos);
             }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + 1) && x.isOccupied == true)) return;
-
-            if ((Vector2)transform.position == startPos)
+            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y + 1)))
             {
-
-                if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + 1) && x.isOccupied == false))
-                {
-
-                    var fakeMark = FakeMarkPool.Instance.Get();
-                    GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
-                    fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                    fakeMark.gameObject.SetActive(true);
-
-                }
-
-
-                if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + 2) && x.isOccupied == false))
-                {
-
-                    var fakeMark = FakeMarkPool.Instance.Get();
-                    GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
-                    fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y + 2);
-                    fakeMark.gameObject.SetActive(true);
-
-                }
+                AddFakeMarkToList(pos2);
             }
-
-            else
-            {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + 1) && x.isOccupied == false))
-                {
-
-                    var fakeMark = FakeMarkPool.Instance.Get();
-                    GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
-                    fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                    fakeMark.gameObject.SetActive(true);
-
-
-                }
-
-            }
-
 
         }
 
         if (rockColor == RockColor.Black)
         {
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y - 1)))
-            {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
-                fakeMark.transform.position = new Vector2(transform.position.x + 1, transform.position.y - 1);
-                fakeMark.gameObject.SetActive(true);
-            }
+            var pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
+            var pos2 = new Vector2(transform.position.x + 1, transform.position.y - 1);
 
             if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y - 1)))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
-                fakeMark.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 1);
-                fakeMark.gameObject.SetActive(true);
+                AddFakeMarkToList(pos2);
             }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - 1) && x.isOccupied == true)) return;
-
-            if ((Vector2)transform.position == startPos)
+            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y - 1)))
             {
-
-                if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - 1) && x.isOccupied == false))
-                {
-
-                    var fakeMark = FakeMarkPool.Instance.Get();
-                    GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
-                    fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                    fakeMark.gameObject.SetActive(true);
-
-                }
-
-
-                if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - 2) && x.isOccupied == false))
-                {
-
-                    var fakeMark = FakeMarkPool.Instance.Get();
-                    GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
-                    fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y - 2);
-                    fakeMark.gameObject.SetActive(true);
-
-                }
+                AddFakeMarkToList(pos);
             }
 
-            else
-            {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - 1) && x.isOccupied == false))
-                {
+            
 
-                    var fakeMark = FakeMarkPool.Instance.Get();
-                    GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Add(fakeMark);
-                    fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                    fakeMark.gameObject.SetActive(true);
-
-
-                }
-
-            }
         }
     }
+    
 
     public override void OccupiedMove()
     {
