@@ -43,12 +43,12 @@ public class Queen : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -63,12 +63,12 @@ public class Queen : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -83,12 +83,12 @@ public class Queen : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -103,12 +103,12 @@ public class Queen : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -123,12 +123,12 @@ public class Queen : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -143,12 +143,12 @@ public class Queen : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -163,12 +163,12 @@ public class Queen : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -183,12 +183,12 @@ public class Queen : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -804,7 +804,7 @@ public override void DetermineShahStateMove()
          
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -817,7 +817,7 @@ public override void DetermineShahStateMove()
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -830,7 +830,7 @@ public override void DetermineShahStateMove()
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -843,7 +843,7 @@ public override void DetermineShahStateMove()
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -856,7 +856,7 @@ public override void DetermineShahStateMove()
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -869,7 +869,7 @@ public override void DetermineShahStateMove()
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -882,7 +882,7 @@ public override void DetermineShahStateMove()
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -895,7 +895,7 @@ public override void DetermineShahStateMove()
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }

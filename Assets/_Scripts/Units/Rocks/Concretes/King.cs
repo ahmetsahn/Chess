@@ -81,12 +81,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -101,12 +101,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -121,12 +121,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -141,12 +141,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -161,12 +161,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -181,12 +181,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -201,12 +201,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -221,12 +221,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -630,12 +630,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
         }
 
@@ -649,12 +649,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
         }
 
@@ -668,12 +668,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
         }
 
@@ -687,12 +687,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
         }
 
@@ -706,12 +706,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
         }
 
@@ -725,12 +725,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
         }
 
@@ -744,12 +744,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
         }
 
@@ -763,12 +763,12 @@ public class King : BaseRock
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }

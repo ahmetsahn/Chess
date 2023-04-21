@@ -36,7 +36,7 @@ public class Knight : BaseRock
                     || x.pos == pos && x.isOccupied == false))
         {
 
-            GetMarkNode(pos);
+            GetMark(pos);
         }
     }
 
@@ -48,7 +48,7 @@ public class Knight : BaseRock
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor
                     || x.pos == pos && x.isOccupied == false))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
     }
 
@@ -62,7 +62,7 @@ public class Knight : BaseRock
         {
 
 
-            GetMarkNode(pos);
+            GetMark(pos);
 
 
 
@@ -79,7 +79,7 @@ public class Knight : BaseRock
         {
 
 
-            GetMarkNode(pos);
+            GetMark(pos);
 
 
 
@@ -95,7 +95,7 @@ public class Knight : BaseRock
                 || x.pos == pos && x.isOccupied == false))
         {
 
-            GetMarkNode(pos);
+            GetMark(pos);
 
 
         }
@@ -111,7 +111,7 @@ public class Knight : BaseRock
         {
 
 
-            GetMarkNode(pos);
+            GetMark(pos);
 
 
 
@@ -127,7 +127,7 @@ public class Knight : BaseRock
                 || x.pos == pos && x.isOccupied == false))
         {
 
-            GetMarkNode(pos);
+            GetMark(pos);
 
 
         }
@@ -142,7 +142,7 @@ public class Knight : BaseRock
                         || x.pos == pos && x.isOccupied == false))
         {
 
-            GetMarkNode(pos);
+            GetMark(pos);
         }
     }
 
@@ -276,56 +276,56 @@ public class Knight : BaseRock
         
         if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
 
         pos = new Vector2(transform.position.x - 1, transform.position.y + 2);
 
         if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 1, transform.position.y + 2)))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
 
         pos = new Vector2(transform.position.x + 2, transform.position.y + 1);
 
         if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 2, transform.position.y + 1)))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
 
         pos = new Vector2(transform.position.x - 2, transform.position.y + 1);
 
         if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 2, transform.position.y + 1)))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
 
         pos = new Vector2(transform.position.x + 1, transform.position.y - 2);
 
         if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 1, transform.position.y - 2)))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
 
         pos = new Vector2(transform.position.x - 1, transform.position.y - 2);
 
         if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 1, transform.position.y - 2)))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
 
         pos = new Vector2(transform.position.x + 2, transform.position.y - 1);
 
         if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 2, transform.position.y - 1)))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
 
         pos = new Vector2(transform.position.x - 2, transform.position.y - 1);
 
         if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 2, transform.position.y - 1)))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
 
         

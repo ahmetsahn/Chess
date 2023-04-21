@@ -191,7 +191,7 @@ public abstract class BaseRock : MonoBehaviour
         return GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos);
     }
 
-    protected void GetMarkNode(Vector2 pos)
+    protected void GetMark(Vector2 pos)
     {
         var mark = MarkPool.Instance.Get();
         mark.transform.position = pos;

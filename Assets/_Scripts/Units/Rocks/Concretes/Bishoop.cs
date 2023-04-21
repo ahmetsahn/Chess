@@ -37,12 +37,12 @@ public class Bishoop : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -57,12 +57,12 @@ public class Bishoop : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -77,12 +77,12 @@ public class Bishoop : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -97,12 +97,12 @@ public class Bishoop : BaseRock
 
             if (IsNodeOccupied(pos, false))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
                 break;
             }
 
             if (IsNodeEmpty(pos))
-                GetMarkNode(pos);
+                GetMark(pos);
         }
     }
 
@@ -425,7 +425,7 @@ public class Bishoop : BaseRock
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -439,7 +439,7 @@ public class Bishoop : BaseRock
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }
@@ -453,7 +453,7 @@ public class Bishoop : BaseRock
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
             
         }
@@ -467,7 +467,7 @@ public class Bishoop : BaseRock
 
             if (IsTheNodeInTheNodeList(pos))
             {
-                GetMarkNode(pos);
+                GetMark(pos);
             }
 
         }

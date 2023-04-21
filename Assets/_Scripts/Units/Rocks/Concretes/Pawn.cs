@@ -81,11 +81,11 @@ public class Pawn : BaseRock
 
         if (IsNodeEmpty(pos))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
         
         if(IsNodeEmpty(pos2))
-            GetMarkNode(pos2);
+            GetMark(pos2);
         }
 
     
@@ -96,7 +96,7 @@ public class Pawn : BaseRock
 
         if (IsNodeEmpty(pos))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
     }
 
@@ -106,7 +106,7 @@ public class Pawn : BaseRock
 
         if (IsNodeOccupied(pos, false))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
     }
 
@@ -116,7 +116,7 @@ public class Pawn : BaseRock
 
         if (IsNodeOccupied(pos, false))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
     }
 
@@ -128,11 +128,11 @@ public class Pawn : BaseRock
 
         if (IsNodeEmpty(pos))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
 
         if (IsNodeEmpty(pos2))
-            GetMarkNode(pos2);
+            GetMark(pos2);
     }
 
     private void ForwardMoveControlForNotStartPos()
@@ -141,7 +141,7 @@ public class Pawn : BaseRock
 
         if (IsNodeEmpty(pos))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
     }
     
@@ -152,7 +152,7 @@ public class Pawn : BaseRock
 
         if (IsNodeOccupied(pos, false))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
     }
 
@@ -162,7 +162,7 @@ public class Pawn : BaseRock
 
         if (IsNodeOccupied(pos, false))
         {
-            GetMarkNode(pos);
+            GetMark(pos);
         }
     }
 
@@ -404,7 +404,7 @@ public class Pawn : BaseRock
             if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
             {
                 
-                GetMarkNode(pos);
+                GetMark(pos);
                 
                 
             }
@@ -414,7 +414,7 @@ public class Pawn : BaseRock
             if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
             {
 
-                GetMarkNode(pos);
+                GetMark(pos);
 
             }
            
@@ -429,7 +429,7 @@ public class Pawn : BaseRock
                 {
 
                     
-                    GetMarkNode(pos);
+                    GetMark(pos);
 
                 }
 
@@ -441,7 +441,7 @@ public class Pawn : BaseRock
                 {
                     
                     
-                    GetMarkNode(pos);
+                    GetMark(pos);
 
 
                 }
@@ -459,7 +459,7 @@ public class Pawn : BaseRock
             if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
             {
 
-                GetMarkNode(pos);
+                GetMark(pos);
 
 
             }
@@ -469,7 +469,7 @@ public class Pawn : BaseRock
             if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
             {
 
-                GetMarkNode(pos);
+                GetMark(pos);
 
             }
 
@@ -484,7 +484,7 @@ public class Pawn : BaseRock
                 {
 
 
-                    GetMarkNode(pos);
+                    GetMark(pos);
                     
                 }
 
@@ -496,7 +496,7 @@ public class Pawn : BaseRock
                 {
 
 
-                    GetMarkNode(pos);
+                    GetMark(pos);
 
 
                 }
