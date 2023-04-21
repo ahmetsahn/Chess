@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class King : BaseRock
 {
@@ -60,343 +61,176 @@ public class King : BaseRock
     public override void ShowNodesItCanGo()
     {
 
+        if (GameManager.Instance.isWhiteKingShahed || GameManager.Instance.isBlackKingShahed)
+        {
+            ThreatenedDirection();
+            ShahStateMove();
+            return;
+        }
+
         HasItEverMovedControl();
 
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y) && x.isOccupied == false))
+        var pos = new Vector2(transform.position.x + 1, transform.position.y);
+
+        if (IsNodeEmpty(pos))
 
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
 
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y) && x.isOccupied == true
-                && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+        pos = new Vector2(transform.position.x - 1, transform.position.y);
+
+        if (IsNodeEmpty(pos))
+
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
+
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y) && x.isOccupied == false))
+        pos = new Vector2(transform.position.x, transform.position.y + 1);
+
+        if (IsNodeEmpty(pos))
+
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
+
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y) && x.isOccupied == true
-               && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+        pos = new Vector2(transform.position.x, transform.position.y - 1);
+
+        if (IsNodeEmpty(pos))
+
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
+
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + 1) && x.isOccupied == false))
+        pos = new Vector2(transform.position.x + 1, transform.position.y + 1);
+
+        if (IsNodeEmpty(pos))
+
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y + 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y + 1));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
+
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + 1) && x.isOccupied == true
-               && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+        pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
+
+        if (IsNodeEmpty(pos))
+
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y + 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y + 1));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
+
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - 1) && x.isOccupied == false))
-        {
+        pos = new Vector2(transform.position.x + 1, transform.position.y - 1);
 
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y - 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y - 1));
+        if (IsNodeEmpty(pos))
+
+        {
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
+
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - 1) && x.isOccupied == true
-               && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
+        pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
+
+        if (IsNodeEmpty(pos))
+
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y - 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y - 1));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
-            }
-        }
-
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y + 1) && x.isOccupied == false))
-        {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y + 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y + 1));
-
-            if (anyEqualForBlack == false && rockColor == RockColor.White)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
-            }
-
-            if (anyEqualForWhite == false && rockColor == RockColor.Black)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
-            }
-        }
-
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y + 1) && x.isOccupied == true
-               && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
-        {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y + 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y + 1));
-
-            if (anyEqualForBlack == false && rockColor == RockColor.White)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
-            }
-
-            if (anyEqualForWhite == false && rockColor == RockColor.Black)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
-            }
-        }
-
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y - 1) && x.isOccupied == false))
-        {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y - 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y - 1));
-
-            if (anyEqualForBlack == false && rockColor == RockColor.White)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
-            }
-
-            if (anyEqualForWhite == false && rockColor == RockColor.Black)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
-            }
-        }
-
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y - 1) && x.isOccupied == true
-               && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
-        {
-
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y - 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y - 1));
-
-            if (anyEqualForBlack == false && rockColor == RockColor.White)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
-            }
-
-            if (anyEqualForWhite == false && rockColor == RockColor.Black)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
-            }
-        }
-
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y - 1) && x.isOccupied == false))
-        {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y - 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y - 1));
-
-            if (anyEqualForBlack == false && rockColor == RockColor.White)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
-            }
-
-            if (anyEqualForWhite == false && rockColor == RockColor.Black)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
-            }
-        }
-
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y - 1) && x.isOccupied == true
-               && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
-        {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y - 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y - 1));
-
-            if (anyEqualForBlack == false && rockColor == RockColor.White)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
-            }
-
-            if (anyEqualForWhite == false && rockColor == RockColor.Black)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x + 1, transform.position.y - 1);
-                mark.gameObject.SetActive(true);
-            }
-        }
-
-
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y + 1) && x.isOccupied == false))
-        {
-
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y + 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y + 1));
-
-            if (anyEqualForBlack == false && rockColor == RockColor.White)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
-            }
-
-            if (anyEqualForWhite == false && rockColor == RockColor.Black)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
-            }
-        }
-
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y + 1) && x.isOccupied == true
-               && x.GetComponentInChildren<BaseRock>().rockColor != rockColor))
-        {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y + 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y + 1));
-
-            if (anyEqualForBlack == false && rockColor == RockColor.White)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
-            }
-
-            if (anyEqualForWhite == false && rockColor == RockColor.Black)
-            {
-                var mark = MarkPool.Instance.Get();
-                mark.transform.position = new Vector2(transform.position.x - 1, transform.position.y + 1);
-                mark.gameObject.SetActive(true);
+                GetMarkNode(pos);
             }
 
         }
+    
 
 
 
@@ -567,11 +401,65 @@ public class King : BaseRock
 
     }
 
+    public void ThreatenedDirection()
+    {
+
+        // Tehdit yönü
+        Vector2 tehditYonu = GameManager.Instance.threateningRock.transform.position - transform.position;
+
+        // Tehdit yönünü normalize etmek, yani uzunluðunu 1'e eþitlemek
+        tehditYonu.Normalize();
+
+        // Tehdit açýsý (radyan)
+        float tehditAci = Mathf.Atan2(tehditYonu.y, tehditYonu.x);
+
+        // Tehdit açýsý (derece)
+        float tehditAciDerece = tehditAci * Mathf.Rad2Deg;
+
+        // Tehdit yönüne göre hareket etmemek için bir koþul
+        if (tehditAciDerece == 0)
+        {
+            directionInWhichItIsoccupied = DirectionInWhichItIsoccupied.Right;
+        }
+        else if (tehditAciDerece == 90)
+        {
+            directionInWhichItIsoccupied = DirectionInWhichItIsoccupied.Forward;
+        }
+        else if (tehditAciDerece == -90)
+        {
+            directionInWhichItIsoccupied = DirectionInWhichItIsoccupied.Back;
+        }
+        else if (tehditAciDerece == 180)
+        {
+            directionInWhichItIsoccupied = DirectionInWhichItIsoccupied.Left;
+        }
+        else if (tehditAciDerece == 45)
+        {
+            directionInWhichItIsoccupied = DirectionInWhichItIsoccupied.ForwardRightCross;
+        }
+        else if (tehditAciDerece == -45)
+        {
+            directionInWhichItIsoccupied = DirectionInWhichItIsoccupied.BackRightCross;
+        }
+        else if (tehditAciDerece == 135)
+        {
+            directionInWhichItIsoccupied = DirectionInWhichItIsoccupied.ForwardLeftCross;
+        }
+        else if (tehditAciDerece == -135)
+        {
+            directionInWhichItIsoccupied = DirectionInWhichItIsoccupied.BackLeftCross;
+        }
+        
+     
+    }
+
     public override void DetermineShahStateMove()
     {
+        ThreatenedDirection();
+
         var pos = new Vector2(transform.position.x + 1, transform.position.y);
         
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied!= DirectionInWhichItIsoccupied.Left || IsNodeOccupied(pos,false))
             
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -591,7 +479,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x - 1, transform.position.y);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.Right || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -611,7 +499,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x, transform.position.y + 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.Back || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -631,7 +519,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x, transform.position.y - 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.Forward || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -651,7 +539,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x + 1, transform.position.y + 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.BackLeftCross || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -671,7 +559,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.ForwardRightCross || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -691,7 +579,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x + 1, transform.position.y - 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.ForwardLeftCross || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -711,7 +599,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.BackRightCross || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -725,6 +613,162 @@ public class King : BaseRock
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
                 AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+            }
+
+        }
+    }
+
+    public override void ShahStateMove()
+    {
+        var pos = new Vector2(transform.position.x + 1, transform.position.y);
+
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.Left || IsNodeOccupied(pos, false))
+
+        {
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
+
+            if (anyEqualForBlack == false && rockColor == RockColor.White)
+            {
+                GetMarkNode(pos);
+            }
+
+            if (anyEqualForWhite == false && rockColor == RockColor.Black)
+            {
+                GetMarkNode(pos);
+            }
+        }
+
+        pos = new Vector2(transform.position.x - 1, transform.position.y);
+
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.Right || IsNodeOccupied(pos, false))
+
+        {
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
+
+            if (anyEqualForBlack == false && rockColor == RockColor.White)
+            {
+                GetMarkNode(pos);
+            }
+
+            if (anyEqualForWhite == false && rockColor == RockColor.Black)
+            {
+                GetMarkNode(pos);
+            }
+        }
+
+        pos = new Vector2(transform.position.x, transform.position.y + 1);
+
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.Back || IsNodeOccupied(pos, false))
+
+        {
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
+
+            if (anyEqualForBlack == false && rockColor == RockColor.White)
+            {
+                GetMarkNode(pos);
+            }
+
+            if (anyEqualForWhite == false && rockColor == RockColor.Black)
+            {
+                GetMarkNode(pos);
+            }
+        }
+
+        pos = new Vector2(transform.position.x, transform.position.y - 1);
+
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.Forward || IsNodeOccupied(pos, false))
+
+        {
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
+
+            if (anyEqualForBlack == false && rockColor == RockColor.White)
+            {
+                GetMarkNode(pos);
+            }
+
+            if (anyEqualForWhite == false && rockColor == RockColor.Black)
+            {
+                GetMarkNode(pos);
+            }
+        }
+
+        pos = new Vector2(transform.position.x + 1, transform.position.y + 1);
+
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.BackLeftCross || IsNodeOccupied(pos, false))
+
+        {
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
+
+            if (anyEqualForBlack == false && rockColor == RockColor.White)
+            {
+                GetMarkNode(pos);
+            }
+
+            if (anyEqualForWhite == false && rockColor == RockColor.Black)
+            {
+                GetMarkNode(pos);
+            }
+        }
+
+        pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
+
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.ForwardRightCross || IsNodeOccupied(pos, false))
+
+        {
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
+
+            if (anyEqualForBlack == false && rockColor == RockColor.White)
+            {
+                GetMarkNode(pos);
+            }
+
+            if (anyEqualForWhite == false && rockColor == RockColor.Black)
+            {
+                GetMarkNode(pos);
+            }
+        }
+
+        pos = new Vector2(transform.position.x + 1, transform.position.y - 1);
+
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.ForwardLeftCross || IsNodeOccupied(pos, false))
+
+        {
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
+
+            if (anyEqualForBlack == false && rockColor == RockColor.White)
+            {
+                GetMarkNode(pos);
+            }
+
+            if (anyEqualForWhite == false && rockColor == RockColor.Black)
+            {
+                GetMarkNode(pos);
+            }
+        }
+
+        pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
+
+        if (IsNodeEmpty(pos) && directionInWhichItIsoccupied != DirectionInWhichItIsoccupied.BackRightCross || IsNodeOccupied(pos, false))
+
+        {
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
+
+            if (anyEqualForBlack == false && rockColor == RockColor.White)
+            {
+                GetMarkNode(pos);
+            }
+
+            if (anyEqualForWhite == false && rockColor == RockColor.Black)
+            {
+                GetMarkNode(pos);
             }
 
         }
