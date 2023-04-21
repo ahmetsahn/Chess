@@ -73,7 +73,7 @@ public class King : BaseRock
 
         var pos = new Vector2(transform.position.x + 1, transform.position.y);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) || IsNodeOccupied(pos,false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -93,7 +93,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x - 1, transform.position.y);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -113,7 +113,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x, transform.position.y + 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -133,7 +133,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x, transform.position.y - 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -153,7 +153,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x + 1, transform.position.y + 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -173,7 +173,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -193,7 +193,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x + 1, transform.position.y - 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -213,7 +213,7 @@ public class King : BaseRock
 
         pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(pos) || IsNodeOccupied(pos, false))
 
         {
             bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
@@ -404,19 +404,19 @@ public class King : BaseRock
     public void ThreatenedDirection()
     {
 
-        // Tehdit yönü
+      
         Vector2 tehditYonu = GameManager.Instance.threateningRock.transform.position - transform.position;
 
-        // Tehdit yönünü normalize etmek, yani uzunluðunu 1'e eþitlemek
+    
         tehditYonu.Normalize();
 
-        // Tehdit açýsý (radyan)
+     
         float tehditAci = Mathf.Atan2(tehditYonu.y, tehditYonu.x);
 
-        // Tehdit açýsý (derece)
+     
         float tehditAciDerece = tehditAci * Mathf.Rad2Deg;
 
-        // Tehdit yönüne göre hareket etmemek için bir koþul
+        
         if (tehditAciDerece == 0)
         {
             directionInWhichItIsoccupied = DirectionInWhichItIsoccupied.Right;

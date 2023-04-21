@@ -206,6 +206,16 @@ public abstract class BaseRock : MonoBehaviour
         fakeMark.gameObject.SetActive(true);
     }
 
+    protected void AddOccupiedMarkToList(Vector2 position)
+    {
+        var occupiedMark = OccupiedMarkPool.Instance.Get();
+        GameManager.Instance.occupiedRockList.Add(occupiedMark);
+        occupiedMark.transform.position = position;
+        occupiedMark.gameObject.SetActive(true);
+    }
+
+
+   
 
 
     public void Die()

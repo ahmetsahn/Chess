@@ -217,10 +217,7 @@ public class Bishoop : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i + j, transform.position.y + i + j) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x + i, transform.position.y + i);
-                        occupiedMark.gameObject.SetActive(true);
+                        AddOccupiedMarkToList(new Vector2(transform.position.x + i, transform.position.y + i));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x + i, transform.position.y + i)).GetComponentInChildren<BaseRock>().
@@ -254,10 +251,8 @@ public class Bishoop : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i - j, transform.position.y - i - j) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x - i, transform.position.y - i);
-                        occupiedMark.gameObject.SetActive(true);
+                        
+                        AddOccupiedMarkToList(new Vector2(transform.position.x - i, transform.position.y - i));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x - i, transform.position.y - i)).GetComponentInChildren<BaseRock>().
@@ -290,10 +285,8 @@ public class Bishoop : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i + j, transform.position.y - i - j) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x + i, transform.position.y - i);
-                        occupiedMark.gameObject.SetActive(true);
+                        
+                        AddOccupiedMarkToList(new Vector2(transform.position.x + i, transform.position.y - i));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x + i, transform.position.y - i)).GetComponentInChildren<BaseRock>().
@@ -326,10 +319,7 @@ public class Bishoop : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i - j, transform.position.y + i + j) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x - i, transform.position.y + i);
-                        occupiedMark.gameObject.SetActive(true);
+                        AddOccupiedMarkToList(new Vector2(transform.position.x - i, transform.position.y + i));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x - i, transform.position.y + i)).GetComponentInChildren<BaseRock>().

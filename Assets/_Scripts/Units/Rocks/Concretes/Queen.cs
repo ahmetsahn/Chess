@@ -351,6 +351,7 @@ public class Queen : BaseRock
 
     }
 
+
     public override void DetermineOccupiedRock()
     {
         bool loopTerminator1 = false;
@@ -362,7 +363,7 @@ public class Queen : BaseRock
         bool loopTerminator7 = false;
         bool loopTerminator8 = false;
 
-
+       
         for (int i = 1; i < 8; i++)
         {
             if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i, transform.position.y) && x.isOccupied == true
@@ -384,10 +385,8 @@ public class Queen : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i + j, transform.position.y) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x + i, transform.position.y);
-                        occupiedMark.gameObject.SetActive(true);
+
+                        AddOccupiedMarkToList(new Vector2(transform.position.x + i, transform.position.y));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x + i, transform.position.y)).GetComponentInChildren<BaseRock>().
@@ -424,10 +423,7 @@ public class Queen : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i - j, transform.position.y) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x - i, transform.position.y);
-                        occupiedMark.gameObject.SetActive(true);
+                        AddOccupiedMarkToList(new Vector2(transform.position.x - i, transform.position.y));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x - i, transform.position.y)).GetComponentInChildren<BaseRock>().
@@ -460,10 +456,7 @@ public class Queen : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + i) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x, transform.position.y);
-                        occupiedMark.gameObject.SetActive(true);
+                        AddOccupiedMarkToList(new Vector2(transform.position.x, transform.position.y + i));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x, transform.position.y + i)).GetComponentInChildren<BaseRock>().
@@ -498,10 +491,7 @@ public class Queen : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - i - j) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x, transform.position.y - i);
-                        occupiedMark.gameObject.SetActive(true);
+                        AddOccupiedMarkToList(new Vector2(transform.position.x, transform.position.y - i));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x, transform.position.y - i)).GetComponentInChildren<BaseRock>().
@@ -534,10 +524,7 @@ public class Queen : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i + j, transform.position.y + i + j) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x + i, transform.position.y + i);
-                        occupiedMark.gameObject.SetActive(true);
+                        AddOccupiedMarkToList(new Vector2(transform.position.x + i, transform.position.y + i));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x + i, transform.position.y + i)).GetComponentInChildren<BaseRock>().
@@ -570,10 +557,7 @@ public class Queen : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i - j, transform.position.y - i - j) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x - i, transform.position.y - i);
-                        occupiedMark.gameObject.SetActive(true);
+                        AddOccupiedMarkToList(new Vector2(transform.position.x - i, transform.position.y - i));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x - i, transform.position.y - i)).GetComponentInChildren<BaseRock>().
@@ -606,10 +590,7 @@ public class Queen : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + i + j, transform.position.y - i - j) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x + i, transform.position.y - i);
-                        occupiedMark.gameObject.SetActive(true);
+                        AddOccupiedMarkToList(new Vector2(transform.position.x + i, transform.position.y - i));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x + i, transform.position.y - i)).GetComponentInChildren<BaseRock>().
@@ -642,10 +623,7 @@ public class Queen : BaseRock
                     if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - i - j, transform.position.y + i + j) && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor && x.GetComponentInChildren<BaseRock>().rockType == RockType.King))
                     {
-                        var occupiedMark = OccupiedMarkPool.Instance.Get();
-                        GameManager.Instance.occupiedRockList.Add(occupiedMark);
-                        occupiedMark.transform.position = new Vector2(transform.position.x - i, transform.position.y + i);
-                        occupiedMark.gameObject.SetActive(true);
+                        AddOccupiedMarkToList(new Vector2(transform.position.x - i, transform.position.y + i));
 
                         var occupiedRock = GameManager.Instance.nodesList.Find
                         (x => x.pos == new Vector2(transform.position.x - i, transform.position.y + i)).GetComponentInChildren<BaseRock>().
