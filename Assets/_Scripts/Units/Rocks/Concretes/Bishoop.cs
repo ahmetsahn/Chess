@@ -370,13 +370,13 @@ public class Bishoop : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x + i, transform.position.y + i);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y + i)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + i, transform.position.y + i);
-                fakeMark.gameObject.SetActive(true);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
@@ -384,13 +384,13 @@ public class Bishoop : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x - i, transform.position.y + i);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y - i)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - i, transform.position.y - i);
-                fakeMark.gameObject.SetActive(true);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
@@ -398,13 +398,13 @@ public class Bishoop : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x + i, transform.position.y - i);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y - i)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + i, transform.position.y - i);
-                fakeMark.gameObject.SetActive(true);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
@@ -412,13 +412,13 @@ public class Bishoop : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x - i, transform.position.y - i);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y + i)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - i, transform.position.y + i);
-                fakeMark.gameObject.SetActive(true);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }

@@ -196,57 +196,57 @@ public class Queen : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            Vector2 newPos = new Vector2(transform.position.x + i, transform.position.y);
+            var pos = new Vector2(transform.position.x + i, transform.position.y);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
+            if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
             {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
 
         for (int i = 1; i < 8; i++)
         {
-            Vector2 newPos = new Vector2(transform.position.x - i, transform.position.y);
+            var pos = new Vector2(transform.position.x - i, transform.position.y);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
+            if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
             {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
         
         for (int i = 1; i < 8; i++)
         {
-            Vector2 newPos = new Vector2(transform.position.x, transform.position.y + i);
+            var pos = new Vector2(transform.position.x, transform.position.y + i);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
+            if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
             {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -254,77 +254,38 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            Vector2 newPos = new Vector2(transform.position.x, transform.position.y - i);
+            var pos = new Vector2(transform.position.x, transform.position.y - i);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
+            if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
             {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
 
         for (int i = 1; i < 8; i++)
         {
-            Vector2 newPos = new Vector2(transform.position.x + i, transform.position.y + i);
+            var pos = new Vector2(transform.position.x + i, transform.position.y + i);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
+            if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
             {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                }
-            }
-        }
-
-
-        for (int i = 1; i < 8; i++)
-        {
-            Vector2 newPos = new Vector2(transform.position.x - i, transform.position.y - i);
-
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
-            {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                    break;
-                }
-
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                }
-            }
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            Vector2 newPos = new Vector2(transform.position.x + i, transform.position.y - i);
-
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
-            {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                    break;
-                }
-
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -332,19 +293,58 @@ public class Queen : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            Vector2 newPos = new Vector2(transform.position.x - i, transform.position.y + i);
+            var pos = new Vector2(transform.position.x - i, transform.position.y - i);
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
+            if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
             {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                     break;
                 }
 
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == false))
                 {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                }
+            }
+        }
+
+        for (int i = 1; i < 8; i++)
+        {
+            var pos = new Vector2(transform.position.x + i, transform.position.y - i);
+
+            if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
+            {
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true))
+                {
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    break;
+                }
+
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == false))
+                {
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                }
+            }
+        }
+
+
+        for (int i = 1; i < 8; i++)
+        {
+            var pos = new Vector2(transform.position.x - i, transform.position.y + i);
+
+            if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
+            {
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true))
+                {
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    break;
+                }
+
+                if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == false))
+                {
+                    AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
                 }
             }
         }
@@ -710,114 +710,106 @@ public override void DetermineShahStateMove()
     {
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x + i, transform.position.y);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + i, transform.position.y);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
-
+                AddFakeMarkToList(pos,GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
 
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x - i, transform.position.y);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - i, transform.position.y);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
-
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
+
         }
 
         for (int i = 1; i < 8; i++)
         {
-            
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x, transform.position.y + i)))
-            {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y + i);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+            var pos = new Vector2(transform.position.x, transform.position.y + i);
 
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
+            {
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
+
         }
 
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x, transform.position.y - i);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x, transform.position.y - i)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y - i);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
-
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
+
         }
 
         for (int i = 1; i < 8; i++)
         {
-           
+            var pos = new Vector2(transform.position.x + i, transform.position.y + i);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y + i)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + i, transform.position.y + i);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
-
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
+
         }
 
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x - i, transform.position.y - i);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y - i)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - i, transform.position.y - i);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
-
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
+
         }
 
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x + i, transform.position.y - i);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + i, transform.position.y - i)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + i, transform.position.y - i);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
-
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
+
         }
 
         for (int i = 1; i < 8; i++)
         {
-            
+            var pos = new Vector2(transform.position.x - i, transform.position.y + i);
 
-            if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - i, transform.position.y + i)))
+            if (IsNodeOccupied(pos, true)) break;
+
+            if (IsTheNodeInTheNodeList(pos))
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - i, transform.position.y + i);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
-
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
+
         }
 
 

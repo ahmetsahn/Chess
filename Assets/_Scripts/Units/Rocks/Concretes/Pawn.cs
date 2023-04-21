@@ -409,12 +409,12 @@ public class Pawn : BaseRock
                 
             }
             
-            var pos2 = new Vector2(transform.position.x - 1, transform.position.y + 1);
+            pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
 
-            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos2)
+            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
             {
 
-                GetMarkNode(pos2);
+                GetMarkNode(pos);
 
             }
            
@@ -422,26 +422,26 @@ public class Pawn : BaseRock
 
             if ((Vector2)transform.position == startPos)
             {
-                var pos3 = new Vector2(transform.position.x, transform.position.y + 1);
+                pos = new Vector2(transform.position.x, transform.position.y + 1);
                 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos3)
-                    && (Vector2)GameManager.Instance.threateningRock.transform.position != pos3)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos)
+                    && (Vector2)GameManager.Instance.threateningRock.transform.position != pos)
                 {
 
                     
-                    GetMarkNode(pos3);
+                    GetMarkNode(pos);
 
                 }
 
-                var pos4 = new Vector2(transform.position.x, transform.position.y + 2);
+                pos = new Vector2(transform.position.x, transform.position.y + 2);
 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos4)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos)
                     
-                && (Vector2)GameManager.Instance.threateningRock.transform.position != pos4)
+                && (Vector2)GameManager.Instance.threateningRock.transform.position != pos)
                 {
-
                     
-                    GetMarkNode(pos4);
+                    
+                    GetMarkNode(pos);
 
 
                 }
@@ -464,12 +464,12 @@ public class Pawn : BaseRock
 
             }
 
-            var pos2 = new Vector2(transform.position.x - 1, transform.position.y - 1);
+            pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
 
-            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos2)
+            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
             {
 
-                GetMarkNode(pos2);
+                GetMarkNode(pos);
 
             }
 
@@ -477,26 +477,26 @@ public class Pawn : BaseRock
 
             if ((Vector2)transform.position == startPos)
             {
-                var pos3 = new Vector2(transform.position.x, transform.position.y - 1);
+                pos = new Vector2(transform.position.x, transform.position.y - 1);
 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos3)
-                    && (Vector2)GameManager.Instance.threateningRock.transform.position != pos3)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos)
+                    && (Vector2)GameManager.Instance.threateningRock.transform.position != pos)
                 {
 
 
-                    GetMarkNode(pos3);
-
+                    GetMarkNode(pos);
+                    
                 }
 
-                var pos4 = new Vector2(transform.position.x, transform.position.y - 2);
+                pos = new Vector2(transform.position.x, transform.position.y - 2);
 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos4)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos)
 
-                && (Vector2)GameManager.Instance.threateningRock.transform.position != pos4)
+                && (Vector2)GameManager.Instance.threateningRock.transform.position != pos)
                 {
 
 
-                    GetMarkNode(pos4);
+                    GetMarkNode(pos);
 
 
                 }

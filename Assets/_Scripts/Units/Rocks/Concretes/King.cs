@@ -569,194 +569,162 @@ public class King : BaseRock
 
     public override void DetermineShahStateMove()
     {
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y) && x.isOccupied == false))
-
+        var pos = new Vector2(transform.position.x + 1, transform.position.y);
+        
+        if (IsNodeEmpty(pos))
+            
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y) && x.isOccupied == false))
+        pos = new Vector2(transform.position.x - 1, transform.position.y);
+
+        if (IsNodeEmpty(pos))
 
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y + 1) && x.isOccupied == false))
+        pos = new Vector2(transform.position.x, transform.position.y + 1);
+
+        if (IsNodeEmpty(pos))
 
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y + 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y + 1));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x, transform.position.y - 1) && x.isOccupied == false))
+        pos = new Vector2(transform.position.x, transform.position.y - 1);
+
+        if (IsNodeEmpty(pos))
 
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y - 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x, transform.position.y - 1));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y + 1) && x.isOccupied == false))
+        pos = new Vector2(transform.position.x + 1, transform.position.y + 1);
+
+        if (IsNodeEmpty(pos))
 
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y + 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y + 1));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + 1, transform.position.y + 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + 1, transform.position.y + 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y - 1) && x.isOccupied == false))
+        pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
+
+        if (IsNodeEmpty(pos))
 
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y - 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y - 1));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - 1, transform.position.y - 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y - 1) && x.isOccupied == false))
+        pos = new Vector2(transform.position.x + 1, transform.position.y - 1);
+
+        if (IsNodeEmpty(pos))
 
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y - 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x + 1, transform.position.y - 1));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + 1, transform.position.y - 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x + 1, transform.position.y - 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y + 1) && x.isOccupied == false))
+        pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
+
+        if (IsNodeEmpty(pos))
 
         {
-            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y + 1));
-            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == new Vector2(transform.position.x - 1, transform.position.y + 1));
+            bool anyEqualForBlack = GameManager.Instance.nodesListTheBlackCanGoTo.Any(y => y == pos);
+            bool anyEqualForWhite = GameManager.Instance.nodesListTheWhiteCanGoTo.Any(y => y == pos);
 
             if (anyEqualForBlack == false && rockColor == RockColor.White)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - 1, transform.position.y + 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
             if (anyEqualForWhite == false && rockColor == RockColor.Black)
             {
-                var fakeMark = FakeMarkPool.Instance.Get();
-                fakeMark.transform.position = new Vector2(transform.position.x - 1, transform.position.y + 1);
-                fakeMark.gameObject.SetActive(true);
-                GameManager.Instance.nodesListTheCanGoToShahedState.Add(fakeMark);
+                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
