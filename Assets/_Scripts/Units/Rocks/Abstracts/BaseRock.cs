@@ -16,6 +16,7 @@ public abstract class BaseRock : MonoBehaviour
     public static event Action OnDetermineShahStateMoveForWhite;
     public static event Action OnDetermineShahStateMoveForBlack;
 
+    protected Vector2 newPos;
 
 
     public static void LoadDetermineAllTheNodesItCanGo()
@@ -101,46 +102,71 @@ public abstract class BaseRock : MonoBehaviour
     {
 
         SetNodeAsParent();
-
-        OnDetermineAllTheNodesItCanGo += DetermineAllTheNodesItCanGo;
-        OnDetermineShahStateMoveForWhite += DetermineShahStateMoveForWhite;
-        OnDetermineShahStateMoveForBlack += DetermineShahStateMoveForBlack;
-        
+        AddListeners();
 
     }
 
+    private void OnDestroy()
+    {
+        RemoveListeners();
+    }
+
+
+    private void AddListeners()
+    {
+        OnDetermineAllTheNodesItCanGo += DetermineAllTheNodesItCanGo;
+        OnDetermineShahStateMoveForWhite += DetermineShahStateMoveForWhite;
+        OnDetermineShahStateMoveForBlack += DetermineShahStateMoveForBlack;
+    }
+
+    private void RemoveListeners()
+    {
+        OnDetermineAllTheNodesItCanGo -= DetermineAllTheNodesItCanGo;
+        OnDetermineShahStateMoveForWhite -= DetermineShahStateMoveForWhite;
+        OnDetermineShahStateMoveForBlack -= DetermineShahStateMoveForBlack;
+    }
 
     private async void DetermineAllTheNodesItCanGo()
     {
         await Task.Delay(505);
+        await ActiveSelfControl();
 
+    }
+
+    private async Task ActiveSelfControl()
+    {
         if (gameObject.activeSelf)
         {
-            if (rockColor == RockColor.Black)
-            {
-                DetermineAllTheNodesItCanGoTo();
-                GameManager.Instance.nodesListTheBlackCanGoTo = GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Select(fakeMark => (Vector2)fakeMark.transform.position).ToList();
-
-            }
+            RockColorControlForBlack();
 
             await Task.Delay(50);
             GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Clear();
             await Task.Delay(50);
-
-            if (rockColor == RockColor.White)
-            {
-                DetermineAllTheNodesItCanGoTo();
-                GameManager.Instance.nodesListTheWhiteCanGoTo = GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Select(fakeMark => (Vector2)fakeMark.transform.position).ToList();
-            }
+            RockColorControlForWhite();
 
             DetermineOccupiedRock();
         }
-
-        
-        
     }
 
-    
+    private void RockColorControlForWhite()
+    {
+        if (rockColor == RockColor.White)
+        {
+            DetermineAllTheNodesItCanGoTo();
+            GameManager.Instance.nodesListTheWhiteCanGoTo = GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Select(fakeMark => (Vector2)fakeMark.transform.position).ToList();
+        }
+    }
+
+    private void RockColorControlForBlack()
+    {
+        if (rockColor == RockColor.Black)
+        {
+            DetermineAllTheNodesItCanGoTo();
+            GameManager.Instance.nodesListTheBlackCanGoTo = GameManager.Instance.allTheNodesListTheOpponentCanGoTo.Select(fakeMark => (Vector2)fakeMark.transform.position).ToList();
+
+        }
+    }
+
 
 
     private void SetNodeAsParent()
@@ -155,19 +181,29 @@ public abstract class BaseRock : MonoBehaviour
 
     private void SequenceControl()
     {
-        if (GameManager.Instance.state == GameStates.WaitingForWhiteInput && rockColor == RockColor.White)
-        {
-            GameManager.Instance.selectedRock = this;
-            GameObject.FindGameObjectsWithTag("Mark").Select(m => m.GetComponent<Mark>()).ToList().ForEach(MarkPool.Instance.ReturnToPool);
-            ShowNodesItCanGo();
+        SequenceControlForWhite();
+        SequenceControlForBlack();
+    }
 
-
-        }
+    private void SequenceControlForBlack()
+    {
         if (GameManager.Instance.state == GameStates.WaitingForBlackInput && rockColor == RockColor.Black)
         {
             GameManager.Instance.selectedRock = this;
-            GameObject.FindGameObjectsWithTag("Mark").Select(m => m.GetComponent<Mark>()).ToList().ForEach(MarkPool.Instance.ReturnToPool);
+            
             ShowNodesItCanGo();
+        }
+    }
+
+    private void SequenceControlForWhite()
+    {
+        if (GameManager.Instance.state == GameStates.WaitingForWhiteInput && rockColor == RockColor.White)
+        {
+            GameManager.Instance.selectedRock = this;
+            
+            ShowNodesItCanGo();
+
+
         }
     }
 

@@ -5,7 +5,7 @@ using static UnityEditor.PlayerSettings;
 public class King : BaseRock
 {
     private Vector2 startPos;
-    public bool canWhiteKingMakeShortCastro = true;
+    private bool canWhiteKingMakeShortCastro = true;
     private bool canWhiteKingMakeLongCastro = true;
     private bool canBlackKingMakeShortCastro = true;
     private bool canBlackKingMakeLongCastro = true;
@@ -13,10 +13,70 @@ public class King : BaseRock
     protected override void Start()
     {
         base.Start();
+        SetStartPost();
+    }
+
+    private void SetStartPost()
+    {
         startPos = transform.position;
     }
 
     public void HasItEverMovedControl()
+    {
+        HasItEverMovedControlForWhite();
+        HasItEverMovedControlForBLack();
+        CanWhiteKingMakeShortCastroControl();
+        CanWhiteKingMakeLongCastroControl();
+        CanBlackKingMakeShortCastroControl();
+        CanBlackKingMakeLongCastroControl();
+
+    }
+
+    private void CanBlackKingMakeLongCastroControl()
+    {
+        if ((Vector2)GameManager.Instance.blackRookLeft.transform.position != GameManager.Instance.blackRookLeft.StartPos)
+        {
+            canBlackKingMakeLongCastro = false;
+        }
+    }
+
+    private void CanBlackKingMakeShortCastroControl()
+    {
+        if ((Vector2)GameManager.Instance.blackRookRight.transform.position != GameManager.Instance.blackRookRight.StartPos)
+        {
+            canBlackKingMakeShortCastro = false;
+        }
+    }
+
+    private void CanWhiteKingMakeLongCastroControl()
+    {
+        if ((Vector2)GameManager.Instance.whiteRookLeft.transform.position != GameManager.Instance.whiteRookLeft.StartPos)
+        {
+            canWhiteKingMakeLongCastro = false;
+        }
+    }
+
+    private void CanWhiteKingMakeShortCastroControl()
+    {
+        if ((Vector2)GameManager.Instance.whiteRookRight.transform.position != GameManager.Instance.whiteRookRight.StartPos)
+        {
+            canWhiteKingMakeShortCastro = false;
+        }
+    }
+
+    private void HasItEverMovedControlForBLack()
+    {
+        if (rockColor == RockColor.Black)
+        {
+            if ((Vector2)transform.position != startPos)
+            {
+                canBlackKingMakeShortCastro = false;
+                canBlackKingMakeLongCastro = false;
+            }
+        }
+    }
+
+    private void HasItEverMovedControlForWhite()
     {
         if (rockColor == RockColor.White)
         {
@@ -26,36 +86,6 @@ public class King : BaseRock
                 canWhiteKingMakeLongCastro = false;
             }
         }
-        else
-        {
-            if ((Vector2)transform.position != startPos)
-            {
-                canBlackKingMakeShortCastro = false;
-                canBlackKingMakeLongCastro = false;
-            }
-        }
-
-        if ((Vector2)GameManager.Instance.whiteRookRight.transform.position != GameManager.Instance.whiteRookRight.StartPos)
-        {
-            canWhiteKingMakeShortCastro = false;
-        }
-
-        if ((Vector2)GameManager.Instance.whiteRookLeft.transform.position != GameManager.Instance.whiteRookLeft.StartPos)
-        {
-            canWhiteKingMakeLongCastro = false;
-        }
-
-        if ((Vector2)GameManager.Instance.blackRookRight.transform.position != GameManager.Instance.blackRookRight.StartPos)
-        {
-            canBlackKingMakeShortCastro = false;
-        }
-
-        if ((Vector2)GameManager.Instance.blackRookLeft.transform.position != GameManager.Instance.blackRookLeft.StartPos)
-        {
-            canBlackKingMakeLongCastro = false;
-        }
-
-
     }
 
     public override void ShowNodesItCanGo()

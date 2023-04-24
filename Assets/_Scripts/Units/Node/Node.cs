@@ -13,8 +13,11 @@ public class Node : MonoBehaviour
 
     private void Update()
     {
-        //child objesinde taþ varsa false
+        IsNodeOccupied();
+    }
 
+    private void IsNodeOccupied()
+    {
         if (transform.childCount > 1)
         {
             isOccupied = true;
@@ -25,10 +28,4 @@ public class Node : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        Debug.Log(pos);
-    }
-
-   
 }

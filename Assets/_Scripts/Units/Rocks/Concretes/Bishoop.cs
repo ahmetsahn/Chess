@@ -6,22 +6,32 @@ public class Bishoop : BaseRock
 {
     public override void ShowNodesItCanGo()
     {
-        if (GameManager.Instance.occupiedRockList.Any(x => x.transform.position == transform.position))
-        {
-            OccupiedMove();
-            return;
-        }
-
-        if (GameManager.Instance.isWhiteKingShahed || GameManager.Instance.isBlackKingShahed)
-        {
-            ShahStateMove();
-            return;
-        }
+        ControlOccupiedStone();
+        ControlShahState();
+        
 
         ForwardRightCrossMoveControl();
         ForwardLeftCrossMoveControl();
         BackRightCrossMoveControl();
         BackLeftCrossMoveControl();
+    }
+
+    private void ControlOccupiedStone()
+    {
+        if (GameManager.Instance.occupiedRockList.Any(x => x.transform.position == transform.position))
+        {
+            OccupiedMove();
+            return;
+        }
+    }
+
+    private void ControlShahState()
+    {
+        if (GameManager.Instance.isWhiteKingShahed || GameManager.Instance.isBlackKingShahed)
+        {
+            ShahStateMove();
+            return;
+        }
     }
 
     private void BackLeftCrossMoveControl()
@@ -108,28 +118,18 @@ public class Bishoop : BaseRock
 
     public override void DetermineAllTheNodesItCanGoTo()
     {
+        DetermineAllTheNodesItCanGoForForwardRightMove();
+        DetermineAllTheNodesItCanGoForForwardLeftMove();
+        DetermineAllTheNodesItCanGoForBackRightMove();
+        DetermineAllTheNodesItCanGoForBackLeftMove();
+
+    }
+
+    private void DetermineAllTheNodesItCanGoForBackLeftMove()
+    {
         for (int i = 1; i < 8; i++)
         {
-            Vector2 newPos = new Vector2(transform.position.x + i, transform.position.y + i);
-
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
-            {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
-                {
-                    AddFakeMarkToList(newPos,GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                    break;
-                }
-
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                }
-            }
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            Vector2 newPos = new Vector2(transform.position.x - i, transform.position.y + i);
+            newPos = new Vector2(transform.position.x - i, transform.position.y - i);
 
             if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
             {
@@ -145,10 +145,13 @@ public class Bishoop : BaseRock
                 }
             }
         }
+    }
 
+    private void DetermineAllTheNodesItCanGoForBackRightMove()
+    {
         for (int i = 1; i < 8; i++)
         {
-            Vector2 newPos = new Vector2(transform.position.x + i, transform.position.y - i);
+            newPos = new Vector2(transform.position.x + i, transform.position.y - i);
 
             if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
             {
@@ -164,10 +167,13 @@ public class Bishoop : BaseRock
                 }
             }
         }
+    }
 
+    private void DetermineAllTheNodesItCanGoForForwardLeftMove()
+    {
         for (int i = 1; i < 8; i++)
         {
-            Vector2 newPos = new Vector2(transform.position.x - i, transform.position.y - i);
+            newPos = new Vector2(transform.position.x - i, transform.position.y + i);
 
             if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
             {
@@ -183,7 +189,28 @@ public class Bishoop : BaseRock
                 }
             }
         }
+    }
 
+    private void DetermineAllTheNodesItCanGoForForwardRightMove()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            newPos = new Vector2(transform.position.x + i, transform.position.y + i);
+
+            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
+            {
+                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
+                {
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    break;
+                }
+
+                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
+                {
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                }
+            }
+        }
     }
 
     public override void DetermineOccupiedRock()

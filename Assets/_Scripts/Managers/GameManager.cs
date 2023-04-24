@@ -85,28 +85,35 @@ public class GameManager : Singleton<GameManager>
             {
                 if ((i + j) % 2 == 0)
                 {
-
-                    var whiteNode = Instantiate(blackNodePrefab, new Vector2(i, j), Quaternion.identity);
-                    nodesList.Add(whiteNode);
+                    CreateBlackGrids(i, j);
                 }
                 else
                 {
-
-                    var blackNode = Instantiate(whiteNodePrefab, new Vector2(i, j), Quaternion.identity);
-                    nodesList.Add(blackNode);
+                    CreateWhiteGrids(i, j);
                 }
             }
         }
     }
 
+    private void CreateWhiteGrids(int i, int j)
+    {
+        var blackNode = Instantiate(whiteNodePrefab, new Vector2(i, j), Quaternion.identity);
+        nodesList.Add(blackNode);
+    }
+
+    private void CreateBlackGrids(int i, int j)
+    {
+        var whiteNode = Instantiate(blackNodePrefab, new Vector2(i, j), Quaternion.identity);
+        nodesList.Add(whiteNode);
+    }
+
     private void SetCameraPosition()
     {
         var center = new Vector2(GRID_WIDTH / 2 - 0.5f, GRID_HEIGHT / 2 - 0.5f);
-
         Camera.main.transform.position = new Vector3(center.x, center.y, -10);
     }
 
-    private void SpawnRocks()
+    private void CreateRocks()
     {
         for (int i = 0; i < 8; i++)
         {
@@ -174,20 +181,18 @@ public class GameManager : Singleton<GameManager>
     {
         GenereteGrid();
         SetCameraPosition();
-        SpawnRocks();
+        CreateRocks();
         ChangeState(GameStates.WaitingForWhiteInput);
     }
 
     private void HandlerWhiteWonState()
-    {
-        
+    { 
         whiteWonPanel.SetActive(true);
         AudioManager.Instance.PlaySound(AudioManager.Instance.wonSound, 1f);
     }
 
     private void HandlerBlackWonState()
-    {
-        
+    { 
         blackWonPanel.SetActive(true);
         AudioManager.Instance.PlaySound(AudioManager.Instance.wonSound, 1f);
     }
@@ -239,43 +244,66 @@ public class GameManager : Singleton<GameManager>
     public async void ShahControl()
     {
         await Task.Delay(650);
-
-        if (nodesListTheWhiteCanGoTo.Any(x => x == (Vector2)blackKing.transform.position))
-        {
-            isBlackKingShahed = true;
-            threateningRock = selectedRock;
-
-            CalculateThreatenedNodes(blackKing.transform.position);
-            BaseRock.LoadDetermineShahStateMoveForBlack();
-
-            if (nodesListTheCanGoToShahedState.Count == 0)
-            {
-                ChangeState(GameStates.WhiteWon);
-            }
-        }
-
-    
-
-        if (nodesListTheBlackCanGoTo.Any(x => x == (Vector2)whiteKing.transform.position))
-        {
-            isWhiteKingShahed = true;
-            threateningRock = selectedRock;
-
-            CalculateThreatenedNodes(whiteKing.transform.position);
-            BaseRock.LoadDetermineShahStateMoveForWhite();
-
-
-            if (nodesListTheCanGoToShahedState.Count == 0)
-            {
-                ChangeState(GameStates.BlackWon);
-            }
-
-            
-
-        }
+        ShahControlForBlack();
+        ShahControlForWhite();
 
     }
 
+    private void ShahControlForWhite()
+    {
+        if (nodesListTheBlackCanGoTo.Any(x => x == (Vector2)whiteKing.transform.position))
+        {
+            SetWhiteShahStateTrue();
+            SetThreateningRock();
+            CalculateThreatenedNodes(whiteKing.transform.position);
+            BaseRock.LoadDetermineShahStateMoveForWhite();
+            BlackWonControl();
+
+        }
+    }
+
+    private void BlackWonControl()
+    {
+        if (nodesListTheCanGoToShahedState.Count == 0)
+        {
+            ChangeState(GameStates.BlackWon);
+        }
+    }
+
+    private void SetWhiteShahStateTrue()
+    {
+        isWhiteKingShahed = true;
+    }
+
+    private void ShahControlForBlack()
+    {
+        if (nodesListTheWhiteCanGoTo.Any(x => x == (Vector2)blackKing.transform.position))
+        {
+            SetBlackShahStateTrue();
+            SetThreateningRock();
+            CalculateThreatenedNodes(blackKing.transform.position);
+            BaseRock.LoadDetermineShahStateMoveForBlack();
+            WhiteWonControl();
+        }
+    }
+
+    private void WhiteWonControl()
+    {
+        if (nodesListTheCanGoToShahedState.Count == 0)
+        {
+            ChangeState(GameStates.WhiteWon);
+        }
+    }
+
+    private void SetThreateningRock()
+    {
+        threateningRock = selectedRock;
+    }
+
+    private void SetBlackShahStateTrue()
+    {
+        isBlackKingShahed = true;
+    }
 }
 
 

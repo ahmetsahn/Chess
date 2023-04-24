@@ -13,19 +13,22 @@ public class Mark : BaseMark
         base.OnMouseDown();
 
         GameManager.Instance.selectedRock.Move(transform.position);
-     
-        if (GameManager.Instance.nodesList.Find(x => x.transform.position == transform.position).isOccupied)
-        {
-            var node = GameManager.Instance.nodesList.Find(x => x.transform.position == transform.position);
-            node.GetComponentInChildren<BaseRock>().Die();
-        }
 
+        IsTheMovingNodeOccupiedControl();
 
         GameManager.Instance.ToggleState();
 
     }
 
-    
+    private void IsTheMovingNodeOccupiedControl()
+    {
+        if (GameManager.Instance.nodesList.Find(x => x.transform.position == transform.position).isOccupied)
+        {
+            var node = GameManager.Instance.nodesList.Find(x => x.transform.position == transform.position);
+            node.GetComponentInChildren<BaseRock>().Die();
+        }
+    }
 
-    
+
+
 }
