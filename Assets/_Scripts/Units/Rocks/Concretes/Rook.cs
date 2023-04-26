@@ -39,19 +39,19 @@ public class Rook : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x, transform.position.y - i);
+             newPos = new Vector2(transform.position.x, transform.position.y - i);
 
-            if (IsNodeOccupied(pos, true))
+            if (IsNodeOccupied(newPos, true))
                 break;
 
-            if (IsNodeOccupied(pos, false))
+            if (IsNodeOccupied(newPos, false))
             {
-                GetMark(pos);
+                GetMark(newPos);
                 break;
             }
 
-            if (IsNodeEmpty(pos))
-                GetMark(pos);
+            if (IsNodeEmpty(newPos))
+                GetMark(newPos);
         }
     }
 
@@ -59,19 +59,19 @@ public class Rook : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x, transform.position.y + i);
+             newPos = new Vector2(transform.position.x, transform.position.y + i);
 
-            if (IsNodeOccupied(pos, true))
+            if (IsNodeOccupied(newPos, true))
                 break;
 
-            if (IsNodeOccupied(pos, false))
+            if (IsNodeOccupied(newPos, false))
             {
-                GetMark(pos);
+                GetMark(newPos);
                 break;
             }
 
-            if (IsNodeEmpty(pos))
-                GetMark(pos);
+            if (IsNodeEmpty(newPos))
+                GetMark(newPos);
         }
     }
 
@@ -79,19 +79,19 @@ public class Rook : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x - i, transform.position.y);
+             newPos = new Vector2(transform.position.x - i, transform.position.y);
 
-            if (IsNodeOccupied(pos, true))
+            if (IsNodeOccupied(newPos, true))
                 break;
 
-            if (IsNodeOccupied(pos, false))
+            if (IsNodeOccupied(newPos, false))
             {
-                GetMark(pos);
+                GetMark(newPos);
                 break;
             }
 
-            if (IsNodeEmpty(pos))
-                GetMark(pos);
+            if (IsNodeEmpty(newPos))
+                GetMark(newPos);
         }
     }
 
@@ -99,83 +99,33 @@ public class Rook : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x + i, transform.position.y);
+             newPos = new Vector2(transform.position.x + i, transform.position.y);
 
-            if (IsNodeOccupied(pos, true))
+            if (IsNodeOccupied(newPos, true))
                 break;
 
-            if (IsNodeOccupied(pos, false))
+            if (IsNodeOccupied(newPos, false))
             {
-                GetMark(pos);
+                GetMark(newPos);
                 break;
             }
 
-            if (IsNodeEmpty(pos))
-                GetMark(pos);
+            if (IsNodeEmpty(newPos))
+                GetMark(newPos);
         }
     }
 
     public override void DetermineAllTheNodesItCanGoTo()
     {
+        DetermineTheNodeItCanGoToRightControl();
+        DetermineTheNodeItCanGoToLeftControl();
+        DetermineTheNodeItCanGoToForwardControl();
+        DetermineTheNodeItCanGoToBackControl();
 
-        for (int i = 1; i < 8; i++)
-        {
-            Vector2 newPos = new Vector2(transform.position.x + i, transform.position.y);
+    }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
-            {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                    break;
-                }
-
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                }
-            }
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            Vector2 newPos = new Vector2(transform.position.x - i, transform.position.y);
-
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
-            {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                    break;
-                }
-
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                }
-            }
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            Vector2 newPos = new Vector2(transform.position.x, transform.position.y + i);
-
-            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
-            {
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                    break;
-                }
-
-                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
-                {
-                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-                }
-            }
-        }
-
-
+    private void DetermineTheNodeItCanGoToBackControl()
+    {
         for (int i = 1; i < 8; i++)
         {
             Vector2 newPos = new Vector2(transform.position.x, transform.position.y - i);
@@ -194,7 +144,72 @@ public class Rook : BaseRock
                 }
             }
         }
+    }
 
+    private void DetermineTheNodeItCanGoToForwardControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            Vector2 newPos = new Vector2(transform.position.x, transform.position.y + i);
+
+            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
+            {
+                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
+                {
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    break;
+                }
+
+                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
+                {
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                }
+            }
+        }
+    }
+
+    private void DetermineTheNodeItCanGoToLeftControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            Vector2 newPos = new Vector2(transform.position.x - i, transform.position.y);
+
+            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
+            {
+                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
+                {
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    break;
+                }
+
+                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
+                {
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                }
+            }
+        }
+    }
+
+    private void DetermineTheNodeItCanGoToRightControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            Vector2 newPos = new Vector2(transform.position.x + i, transform.position.y);
+
+            if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
+            {
+                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true))
+                {
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                    break;
+                }
+
+                if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == false))
+                {
+                    AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                }
+            }
+        }
     }
 
     public override void DetermineOccupiedRock()
@@ -237,7 +252,7 @@ public class Rook : BaseRock
                     }
                 }
             }
-
+            
         }
         
 
@@ -373,117 +388,147 @@ public class Rook : BaseRock
 
     public override void DetermineShahStateMove()
     {
-        for (int i = 1; i < 8; i++)
-        {
-            var pos = new Vector2(transform.position.x + i, transform.position.y);
-
-            if (IsNodeOccupied(pos, true)) break;
-
-            if (IsTheNodeInTheNodeList(pos))
-            {
-                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
-            }
-
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            var pos = new Vector2(transform.position.x - i, transform.position.y);
-
-            if (IsNodeOccupied(pos, true)) break;
-
-            if (IsTheNodeInTheNodeList(pos))
-            {
-                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
-            }
-
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            var pos = new Vector2(transform.position.x, transform.position.y + i);
-
-            if (IsNodeOccupied(pos, true)) break;
-
-            if (IsTheNodeInTheNodeList(pos))
-            {
-                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
-            }
-
-        }
-
-        for (int i = 1; i < 8; i++)
-        {
-            var pos = new Vector2(transform.position.x, transform.position.y - i);
-
-            if (IsNodeOccupied(pos, true)) break;
-
-            if (IsTheNodeInTheNodeList(pos))
-            {
-                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
-            }
-
-        }
+        DetermineShahStateRightMove();
+        DetermineShahStateLeftMove();
+        DetermineShahStateForwardMove();
+        DetermineShahStateBackMove();
 
     }
 
-
-    public override void ShahStateMove()
+    private void DetermineShahStateBackMove()
     {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x + i, transform.position.y);
+            newPos = new Vector2(transform.position.x, transform.position.y - i);
 
-            if (IsNodeOccupied(pos, true)) break;
+            if (IsNodeOccupied(newPos, true)) break;
 
-            if (IsTheNodeInTheNodeList(pos))
+            if (IsTheNodeInTheNodeList(newPos))
             {
-                GetMark(pos);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
+    }
 
+    private void DetermineShahStateForwardMove()
+    {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x - i, transform.position.y);
+            newPos = new Vector2(transform.position.x, transform.position.y + i);
 
-            if (IsNodeOccupied(pos, true)) break;
+            if (IsNodeOccupied(newPos, true)) break;
 
-            if (IsTheNodeInTheNodeList(pos))
+            if (IsTheNodeInTheNodeList(newPos))
             {
-                GetMark(pos);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
+    }
 
+    private void DetermineShahStateLeftMove()
+    {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x, transform.position.y + i);
+            newPos = new Vector2(transform.position.x - i, transform.position.y);
 
-            if (IsNodeOccupied(pos, true)) break;
+            if (IsNodeOccupied(newPos, true)) break;
 
-            if (IsTheNodeInTheNodeList(pos))
+            if (IsTheNodeInTheNodeList(newPos))
             {
-                GetMark(pos);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
+    }
 
+    private void DetermineShahStateRightMove()
+    {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x, transform.position.y - i);
+            newPos = new Vector2(transform.position.x + i, transform.position.y);
 
-            if (IsNodeOccupied(pos, true)) break;
+            if (IsNodeOccupied(newPos, true)) break;
 
-            if (IsTheNodeInTheNodeList(pos))
+            if (IsTheNodeInTheNodeList(newPos))
             {
-                GetMark(pos);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
+    }
+
+    public override void ShahStateMove()
+    {
+        ShahStateRightMoveControl();
+        ShahStateLeftMoveControl();
+        ShahStateForwardMoveControl();
+        ShahStateBackMoveControl();
 
     }
 
+    private void ShahStateBackMoveControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            newPos = new Vector2(transform.position.x, transform.position.y - i);
 
+            if (IsNodeOccupied(newPos, true)) break;
 
+            if (IsTheNodeInTheNodeList(newPos))
+            {
+                GetMark(newPos);
+            }
+
+        }
+    }
+
+    private void ShahStateForwardMoveControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            newPos = new Vector2(transform.position.x, transform.position.y + i);
+
+            if (IsNodeOccupied(newPos, true)) break;
+
+            if (IsTheNodeInTheNodeList(newPos))
+            {
+                GetMark(newPos);
+            }
+
+        }
+    }
+
+    private void ShahStateLeftMoveControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            newPos = new Vector2(transform.position.x - i, transform.position.y);
+
+            if (IsNodeOccupied(newPos, true)) break;
+
+            if (IsTheNodeInTheNodeList(newPos))
+            {
+                GetMark(newPos);
+            }
+
+        }
+    }
+
+    private void ShahStateRightMoveControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            newPos = new Vector2(transform.position.x + i, transform.position.y);
+
+            if (IsNodeOccupied(newPos, true)) break;
+
+            if (IsTheNodeInTheNodeList(newPos))
+            {
+                GetMark(newPos);
+            }
+
+        }
+    }
 }

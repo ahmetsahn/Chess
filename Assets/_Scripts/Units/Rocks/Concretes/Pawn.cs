@@ -76,135 +76,151 @@ public class Pawn : BaseRock
     void BackMoveControlForStartPos()
     {
 
-        var pos = new Vector2(transform.position.x, transform.position.y - 1);
-        var pos2 = new Vector2(transform.position.x, transform.position.y - 2);
-
-        if (IsNodeEmpty(pos))
-        {
-            GetMark(pos);
-        }
+        newPos = new Vector2(transform.position.x, transform.position.y - 1);
         
-        if(IsNodeEmpty(pos2))
-            GetMark(pos2);
+
+        if (IsNodeEmpty(newPos))
+        {
+            GetMark(newPos);
+        }
+
+        newPos = new Vector2(transform.position.x, transform.position.y - 2);
+
+        if (IsNodeEmpty(newPos))
+            GetMark(newPos);
         }
 
     
 
     private void BackMoveControlForNotStartPos()
     {
-        var pos = new Vector2(transform.position.x, transform.position.y - 1);
+        newPos = new Vector2(transform.position.x, transform.position.y - 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(newPos))
         {
-            GetMark(pos);
+            GetMark(newPos);
         }
     }
 
     private void BackLeftCrossMoveControl()
     {
-        var pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
+        newPos = new Vector2(transform.position.x - 1, transform.position.y - 1);
 
-        if (IsNodeOccupied(pos, false))
+        if (IsNodeOccupied(newPos, false))
         {
-            GetMark(pos);
+            GetMark(newPos);
         }
     }
 
     private void BackRightCrossMoveControl()
     {
-        var pos = new Vector2(transform.position.x + 1, transform.position.y - 1);
+        newPos = new Vector2(transform.position.x + 1, transform.position.y - 1);
 
-        if (IsNodeOccupied(pos, false))
+        if (IsNodeOccupied(newPos, false))
         {
-            GetMark(pos);
+            GetMark(newPos);
         }
     }
 
 
     private void ForwardMoveControlForStartPos()
     {
-        var pos = new Vector2(transform.position.x, transform.position.y + 1);
-        var pos2 = new Vector2(transform.position.x, transform.position.y + 2);
+        newPos = new Vector2(transform.position.x, transform.position.y + 1);
+        
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(newPos))
         {
-            GetMark(pos);
+            GetMark(newPos);
         }
 
-        if (IsNodeEmpty(pos2))
-            GetMark(pos2);
+        newPos = new Vector2(transform.position.x, transform.position.y + 2);
+
+        if (IsNodeEmpty(newPos))
+            GetMark(newPos);
     }
 
     private void ForwardMoveControlForNotStartPos()
     {
-        var pos = new Vector2(transform.position.x, transform.position.y + 1);
+        newPos = new Vector2(transform.position.x, transform.position.y + 1);
 
-        if (IsNodeEmpty(pos))
+        if (IsNodeEmpty(newPos))
         {
-            GetMark(pos);
+            GetMark(newPos);
         }
     }
     
 
     private void ForwardLeftCrossMoveControl()
     {
-        var pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
+        newPos = new Vector2(transform.position.x - 1, transform.position.y + 1);
 
-        if (IsNodeOccupied(pos, false))
+        if (IsNodeOccupied(newPos, false))
         {
-            GetMark(pos);
+            GetMark(newPos);
         }
     }
 
     private void ForwardRightCrossMoveControl()
     {
-        var pos = new Vector2(transform.position.x + 1, transform.position.y + 1);
+        newPos = new Vector2(transform.position.x + 1, transform.position.y + 1);
 
-        if (IsNodeOccupied(pos, false))
+        if (IsNodeOccupied(newPos, false))
         {
-            GetMark(pos);
+            GetMark(newPos);
         }
     }
 
     public override void DetermineAllTheNodesItCanGoTo()
     {
-        if(rockColor == RockColor.White)
-        {
-            var pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
-            var pos2 = new Vector2(transform.position.x + 1, transform.position.y + 1);
+        DetermineNodesItCanGoForWhite();
+        DetermineNodesItCanGoForBlack();
+    }
 
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y + 1)))
-            {
-                AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-            }
-
-            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y + 1)))
-            {
-                AddFakeMarkToList(pos2, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
-            }
-
-        }
-
+    private void DetermineNodesItCanGoForBlack()
+    {
         if (rockColor == RockColor.Black)
         {
-            var pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
-            var pos2 = new Vector2(transform.position.x + 1, transform.position.y - 1);
+            newPos = new Vector2(transform.position.x - 1, transform.position.y - 1);
+            
 
             if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y - 1)))
             {
-                AddFakeMarkToList(pos2, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
             }
+
+            newPos = new Vector2(transform.position.x + 1, transform.position.y - 1);
 
             if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y - 1)))
             {
-                AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+                AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
             }
 
-            
+
 
         }
     }
-    
+
+    private void DetermineNodesItCanGoForWhite()
+    {
+        if (rockColor == RockColor.White)
+        {
+            newPos = new Vector2(transform.position.x - 1, transform.position.y + 1);
+            
+
+            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x - 1, transform.position.y + 1)))
+            {
+                AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+            }
+
+            newPos = new Vector2(transform.position.x + 1, transform.position.y + 1);
+
+            if (GameManager.Instance.nodesList.Any(x => x.pos == new Vector2(transform.position.x + 1, transform.position.y + 1)))
+            {
+                AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+            }
+
+        }
+    }
 
     public override void OccupiedMove()
     {
@@ -284,22 +300,22 @@ public class Pawn : BaseRock
     {
         if (rockColor == RockColor.White)
         {
-            var pos = new Vector2(transform.position.x + 1, transform.position.y + 1);
+            newPos = new Vector2(transform.position.x + 1, transform.position.y + 1);
 
-            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
+            if ((Vector2)GameManager.Instance.threateningRock.transform.position == newPos)
             {
 
-                AddFakeMarkToList(pos,GameManager.Instance.nodesListTheCanGoToShahedState);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
 
 
             }
 
-            var pos2 = new Vector2(transform.position.x - 1, transform.position.y + 1);
+            newPos = new Vector2(transform.position.x - 1, transform.position.y + 1);
 
-            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos2)
+            if ((Vector2)GameManager.Instance.threateningRock.transform.position == newPos)
             {
 
-                AddFakeMarkToList(pos2, GameManager.Instance.nodesListTheCanGoToShahedState);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
 
             }
 
@@ -307,26 +323,26 @@ public class Pawn : BaseRock
 
             if ((Vector2)transform.position == startPos)
             {
-                var pos3 = new Vector2(transform.position.x, transform.position.y + 1);
+                newPos = new Vector2(transform.position.x, transform.position.y + 1);
 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos3)
-                    && (Vector2)GameManager.Instance.threateningRock.transform.position != pos3)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos)
+                    && (Vector2)GameManager.Instance.threateningRock.transform.position != newPos)
                 {
 
 
-                    AddFakeMarkToList(pos3, GameManager.Instance.nodesListTheCanGoToShahedState);
+                    AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
 
                 }
 
-                var pos4 = new Vector2(transform.position.x, transform.position.y + 2);
+                newPos = new Vector2(transform.position.x, transform.position.y + 2);
 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos4)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos)
 
-                && (Vector2)GameManager.Instance.threateningRock.transform.position != pos4)
+                && (Vector2)GameManager.Instance.threateningRock.transform.position != newPos)
                 {
 
 
-                    AddFakeMarkToList(pos4, GameManager.Instance.nodesListTheCanGoToShahedState);
+                    AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
 
 
                 }
@@ -339,22 +355,22 @@ public class Pawn : BaseRock
         if (rockColor == RockColor.Black)
         {
 
-            var pos = new Vector2(transform.position.x + 1, transform.position.y - 1);
+            newPos = new Vector2(transform.position.x + 1, transform.position.y - 1);
 
-            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
+            if ((Vector2)GameManager.Instance.threateningRock.transform.position == newPos)
             {
 
-                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
 
 
             }
 
-            var pos2 = new Vector2(transform.position.x - 1, transform.position.y - 1);
+            newPos = new Vector2(transform.position.x - 1, transform.position.y - 1);
 
-            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos2)
+            if ((Vector2)GameManager.Instance.threateningRock.transform.position == newPos)
             {
 
-                AddFakeMarkToList(pos2, GameManager.Instance.nodesListTheCanGoToShahedState);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
 
             }
 
@@ -362,26 +378,26 @@ public class Pawn : BaseRock
 
             if ((Vector2)transform.position == startPos)
             {
-                var pos3 = new Vector2(transform.position.x, transform.position.y - 1);
+                newPos = new Vector2(transform.position.x, transform.position.y - 1);
 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos3)
-                    && (Vector2)GameManager.Instance.threateningRock.transform.position != pos3)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos)
+                    && (Vector2)GameManager.Instance.threateningRock.transform.position != newPos)
                 {
 
 
-                    AddFakeMarkToList(pos3, GameManager.Instance.nodesListTheCanGoToShahedState);
+                    AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
 
                 }
 
-                var pos4 = new Vector2(transform.position.x, transform.position.y - 2);
+                newPos = new Vector2(transform.position.x, transform.position.y - 2);
 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos4)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos)
 
-                && (Vector2)GameManager.Instance.threateningRock.transform.position != pos4)
+                && (Vector2)GameManager.Instance.threateningRock.transform.position != newPos)
                 {
 
 
-                    AddFakeMarkToList(pos4, GameManager.Instance.nodesListTheCanGoToShahedState);
+                    AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
 
 
                 }
@@ -399,22 +415,22 @@ public class Pawn : BaseRock
     {
         if (rockColor == RockColor.White)
         {
-            var pos = new Vector2(transform.position.x + 1, transform.position.y + 1);
+            newPos = new Vector2(transform.position.x + 1, transform.position.y + 1);
 
-            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
+            if ((Vector2)GameManager.Instance.threateningRock.transform.position == newPos)
             {
                 
-                GetMark(pos);
+                GetMark(newPos);
                 
                 
             }
-            
-            pos = new Vector2(transform.position.x - 1, transform.position.y + 1);
 
-            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
+            newPos = new Vector2(transform.position.x - 1, transform.position.y + 1);
+
+            if ((Vector2)GameManager.Instance.threateningRock.transform.position == newPos)
             {
 
-                GetMark(pos);
+                GetMark(newPos);
 
             }
            
@@ -422,26 +438,26 @@ public class Pawn : BaseRock
 
             if ((Vector2)transform.position == startPos)
             {
-                pos = new Vector2(transform.position.x, transform.position.y + 1);
+                newPos = new Vector2(transform.position.x, transform.position.y + 1);
                 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos)
-                    && (Vector2)GameManager.Instance.threateningRock.transform.position != pos)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos)
+                    && (Vector2)GameManager.Instance.threateningRock.transform.position != newPos)
                 {
 
                     
-                    GetMark(pos);
+                    GetMark(newPos);
 
                 }
 
-                pos = new Vector2(transform.position.x, transform.position.y + 2);
+                newPos = new Vector2(transform.position.x, transform.position.y + 2);
 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos)
                     
-                && (Vector2)GameManager.Instance.threateningRock.transform.position != pos)
+                && (Vector2)GameManager.Instance.threateningRock.transform.position != newPos)
                 {
                     
                     
-                    GetMark(pos);
+                    GetMark(newPos);
 
 
                 }
@@ -454,22 +470,22 @@ public class Pawn : BaseRock
         if (rockColor == RockColor.Black)
         {
 
-            var pos = new Vector2(transform.position.x + 1, transform.position.y - 1);
+            newPos = new Vector2(transform.position.x + 1, transform.position.y - 1);
 
-            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
+            if ((Vector2)GameManager.Instance.threateningRock.transform.position == newPos)
             {
 
-                GetMark(pos);
+                GetMark(newPos);
 
 
             }
 
-            pos = new Vector2(transform.position.x - 1, transform.position.y - 1);
+            newPos = new Vector2(transform.position.x - 1, transform.position.y - 1);
 
-            if ((Vector2)GameManager.Instance.threateningRock.transform.position == pos)
+            if ((Vector2)GameManager.Instance.threateningRock.transform.position == newPos)
             {
 
-                GetMark(pos);
+                GetMark(newPos);
 
             }
 
@@ -477,26 +493,26 @@ public class Pawn : BaseRock
 
             if ((Vector2)transform.position == startPos)
             {
-                pos = new Vector2(transform.position.x, transform.position.y - 1);
+                newPos = new Vector2(transform.position.x, transform.position.y - 1);
 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos)
-                    && (Vector2)GameManager.Instance.threateningRock.transform.position != pos)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos)
+                    && (Vector2)GameManager.Instance.threateningRock.transform.position != newPos)
                 {
 
 
-                    GetMark(pos);
+                    GetMark(newPos);
                     
                 }
 
-                pos = new Vector2(transform.position.x, transform.position.y - 2);
+                newPos = new Vector2(transform.position.x, transform.position.y - 2);
 
-                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos)
+                if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos)
 
-                && (Vector2)GameManager.Instance.threateningRock.transform.position != pos)
+                && (Vector2)GameManager.Instance.threateningRock.transform.position != newPos)
                 {
 
 
-                    GetMark(pos);
+                    GetMark(newPos);
 
 
                 }

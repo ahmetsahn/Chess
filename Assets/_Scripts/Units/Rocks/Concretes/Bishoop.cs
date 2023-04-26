@@ -40,19 +40,19 @@ public class Bishoop : BaseRock
 
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x - i, transform.position.y - i);
+            var newPos = new Vector2(transform.position.x - i, transform.position.y - i);
 
-            if (IsNodeOccupied(pos, true))
+            if (IsNodeOccupied(newPos, true))
                 break;
 
-            if (IsNodeOccupied(pos, false))
+            if (IsNodeOccupied(newPos, false))
             {
-                GetMark(pos);
+                GetMark(newPos);
                 break;
             }
 
-            if (IsNodeEmpty(pos))
-                GetMark(pos);
+            if (IsNodeEmpty(newPos))
+                GetMark(newPos);
         }
     }
 
@@ -60,19 +60,19 @@ public class Bishoop : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x + i, transform.position.y - i);
+            var newPos = new Vector2(transform.position.x + i, transform.position.y - i);
 
-            if (IsNodeOccupied(pos, true))
+            if (IsNodeOccupied(newPos, true))
                 break;
 
-            if (IsNodeOccupied(pos, false))
+            if (IsNodeOccupied(newPos, false))
             {
-                GetMark(pos);
+                GetMark(newPos);
                 break;
             }
 
-            if (IsNodeEmpty(pos))
-                GetMark(pos);
+            if (IsNodeEmpty(newPos))
+                GetMark(newPos);
         }
     }
 
@@ -80,19 +80,19 @@ public class Bishoop : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x - i, transform.position.y + i);
+            var newPos = new Vector2(transform.position.x - i, transform.position.y + i);
 
-            if (IsNodeOccupied(pos, true))
+            if (IsNodeOccupied(newPos, true))
                 break;
 
-            if (IsNodeOccupied(pos, false))
+            if (IsNodeOccupied(newPos, false))
             {
-                GetMark(pos);
+                GetMark(newPos);
                 break;
             }
 
-            if (IsNodeEmpty(pos))
-                GetMark(pos);
+            if (IsNodeEmpty(newPos))
+                GetMark(newPos);
         }
     }
 
@@ -100,19 +100,19 @@ public class Bishoop : BaseRock
     {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x + i, transform.position.y + i);
+            var newPos = new Vector2(transform.position.x + i, transform.position.y + i);
 
-            if (IsNodeOccupied(pos, true))
+            if (IsNodeOccupied(newPos, true))
                 break;
 
-            if (IsNodeOccupied(pos, false))
+            if (IsNodeOccupied(newPos, false))
             {
-                GetMark(pos);
+                GetMark(newPos);
                 break;
             }
 
-            if (IsNodeEmpty(pos))
-                GetMark(pos);
+            if (IsNodeEmpty(newPos))
+                GetMark(newPos);
         }
     }
 
@@ -385,122 +385,146 @@ public class Bishoop : BaseRock
 
     public override void DetermineShahStateMove()
     {
+        DetermineShahStateForwardRightMove();
+        DetermineShahStateForwardLeftMove();
+        DetermineShahStateBackRightMove();
+        DetermineShahStateBackLeftMove();
+
+    }
+
+    private void DetermineShahStateBackLeftMove()
+    {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x + i, transform.position.y + i);
+            newPos = new Vector2(transform.position.x - i, transform.position.y - i);
 
-            if (IsNodeOccupied(pos, true)) break;
+            if (IsNodeOccupied(newPos, true)) break;
 
-            if (IsTheNodeInTheNodeList(pos))
+            if (IsTheNodeInTheNodeList(newPos))
             {
-                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
+    }
 
-
+    private void DetermineShahStateBackRightMove()
+    {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x - i, transform.position.y + i);
+            newPos = new Vector2(transform.position.x + i, transform.position.y - i);
 
-            if (IsNodeOccupied(pos, true)) break;
+            if (IsNodeOccupied(newPos, true)) break;
 
-            if (IsTheNodeInTheNodeList(pos))
+            if (IsTheNodeInTheNodeList(newPos))
             {
-                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
+    }
 
-
+    private void DetermineShahStateForwardLeftMove()
+    {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x + i, transform.position.y - i);
+            newPos = new Vector2(transform.position.x - i, transform.position.y + i);
 
-            if (IsNodeOccupied(pos, true)) break;
+            if (IsNodeOccupied(newPos, true)) break;
 
-            if (IsTheNodeInTheNodeList(pos))
+            if (IsTheNodeInTheNodeList(newPos))
             {
-                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
+    }
 
-
+    private void DetermineShahStateForwardRightMove()
+    {
         for (int i = 1; i < 8; i++)
         {
-            var pos = new Vector2(transform.position.x - i, transform.position.y - i);
+            newPos = new Vector2(transform.position.x + i, transform.position.y + i);
 
-            if (IsNodeOccupied(pos, true)) break;
+            if (IsNodeOccupied(newPos, true)) break;
 
-            if (IsTheNodeInTheNodeList(pos))
+            if (IsTheNodeInTheNodeList(newPos))
             {
-                AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+                AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
             }
 
         }
-
     }
 
     public override void ShahStateMove()
     {
-        for (int i = 1; i < 8; i++)
-        {
-            var pos = new Vector2(transform.position.x + i, transform.position.y + i);
-
-            if (IsNodeOccupied(pos, true)) break;
-
-            if (IsTheNodeInTheNodeList(pos))
-            {
-                GetMark(pos);
-            }
-
-        }
-
-
-        for (int i = 1; i < 8; i++)
-        {
-            var pos = new Vector2(transform.position.x - i, transform.position.y + i);
-
-            if (IsNodeOccupied(pos, true)) break;
-
-            if (IsTheNodeInTheNodeList(pos))
-            {
-                GetMark(pos);
-            }
-
-        }
-
-
-        for (int i = 1; i < 8; i++)
-        {
-            var pos = new Vector2(transform.position.x + i, transform.position.y - i);
-
-            if (IsNodeOccupied(pos, true)) break;
-
-            if (IsTheNodeInTheNodeList(pos))
-            {
-                GetMark(pos);
-            }
-            
-        }
-
-
-        for (int i = 1; i < 8; i++)
-        {
-            var pos = new Vector2(transform.position.x - i, transform.position.y - i);
-
-            if (IsNodeOccupied(pos, true)) break;
-
-            if (IsTheNodeInTheNodeList(pos))
-            {
-                GetMark(pos);
-            }
-
-        }
-
+        ShahStateForwardRightMoveControl();
+        ShahStateForwardLeftMoveControl();
+        ShahStateBackRightMoveControl();
+        ShahStateBackLeftMoveControl();
     }
 
+    private void ShahStateBackLeftMoveControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            newPos = new Vector2(transform.position.x - i, transform.position.y - i);
 
+            if (IsNodeOccupied(newPos, true)) break;
 
+            if (IsTheNodeInTheNodeList(newPos))
+            {
+                GetMark(newPos);
+            }
+
+        }
+    }
+
+    private void ShahStateBackRightMoveControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            newPos = new Vector2(transform.position.x + i, transform.position.y - i);
+
+            if (IsNodeOccupied(newPos, true)) break;
+
+            if (IsTheNodeInTheNodeList(newPos))
+            {
+                GetMark(newPos);
+            }
+
+        }
+    }
+
+    private void ShahStateForwardLeftMoveControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            newPos = new Vector2(transform.position.x - i, transform.position.y + i);
+
+            if (IsNodeOccupied(newPos, true)) break;
+
+            if (IsTheNodeInTheNodeList(newPos))
+            {
+                GetMark(newPos);
+            }
+
+        }
+    }
+
+    private void ShahStateForwardRightMoveControl()
+    {
+        for (int i = 1; i < 8; i++)
+        {
+            newPos = new Vector2(transform.position.x + i, transform.position.y + i);
+
+            if (IsNodeOccupied(newPos, true)) break;
+
+            if (IsTheNodeInTheNodeList(newPos))
+            {
+                GetMark(newPos);
+            }
+
+        }
+    }
 }

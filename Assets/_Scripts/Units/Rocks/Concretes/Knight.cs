@@ -29,40 +29,40 @@ public class Knight : BaseRock
 
     private void LeftBackMoveControlForOccupied()
     {
-        var pos = new Vector2(transform.position.x - 2, transform.position.y - 1);
+        newPos = new Vector2(transform.position.x - 2, transform.position.y - 1);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor
-                    || x.pos == pos && x.isOccupied == false))
+                    || x.pos == newPos && x.isOccupied == false))
         {
 
-            GetMark(pos);
+            GetMark(newPos);
         }
     }
 
     private void RightBackMoveControlForOccupied()
     {
-        var pos = new Vector2(transform.position.x + 2, transform.position.y - 1);
+        newPos = new Vector2(transform.position.x + 2, transform.position.y - 1);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor
-                    || x.pos == pos && x.isOccupied == false))
+                    || x.pos == newPos && x.isOccupied == false))
         {
-            GetMark(pos);
+            GetMark(newPos);
         }
     }
 
     private void BackLeftMoveControlForOccupied()
     {
-        var pos = new Vector2(transform.position.x - 1, transform.position.y - 2);
+        newPos = new Vector2(transform.position.x - 1, transform.position.y - 2);
         
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true
                     && x.GetComponentInChildren<BaseRock>().rockColor != rockColor
-                    || x.pos == pos && x.isOccupied == false))
+                    || x.pos == newPos && x.isOccupied == false))
         {
 
 
-            GetMark(pos);
+            GetMark(newPos);
 
 
 
@@ -71,15 +71,15 @@ public class Knight : BaseRock
 
     private void BackRightMoveControlForOccupied()
     {
-        var pos = new Vector2(transform.position.x + 1, transform.position.y - 2);
+        newPos = new Vector2(transform.position.x + 1, transform.position.y - 2);
         
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true
                 && x.GetComponentInChildren<BaseRock>().rockColor != rockColor
-                || x.pos == pos && x.isOccupied == false))
+                || x.pos == newPos && x.isOccupied == false))
         {
 
 
-            GetMark(pos);
+            GetMark(newPos);
 
 
 
@@ -88,14 +88,14 @@ public class Knight : BaseRock
 
     private void LeftForwardMoveControlForOccupied()
     {
-        var pos = new Vector2(transform.position.x - 2, transform.position.y + 1);
+        newPos = new Vector2(transform.position.x - 2, transform.position.y + 1);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true
                 && x.GetComponentInChildren<BaseRock>().rockColor != rockColor
-                || x.pos == pos && x.isOccupied == false))
+                || x.pos == newPos && x.isOccupied == false))
         {
 
-            GetMark(pos);
+            GetMark(newPos);
 
 
         }
@@ -103,15 +103,15 @@ public class Knight : BaseRock
 
     private void RightForwardMoveControlForOccupied()
     {
-        var pos = new Vector2(transform.position.x + 2, transform.position.y + 1);
+        newPos = new Vector2(transform.position.x + 2, transform.position.y + 1);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true
                 && x.GetComponentInChildren<BaseRock>().rockColor != rockColor
-                || x.pos == pos && x.isOccupied == false))
+                || x.pos == newPos && x.isOccupied == false))
         {
 
 
-            GetMark(pos);
+            GetMark(newPos);
 
 
 
@@ -120,14 +120,14 @@ public class Knight : BaseRock
 
     private void ForwardLeftMoveControlForOccupied()
     {
-        var pos = new Vector2(transform.position.x - 1, transform.position.y + 2);
+        newPos = new Vector2(transform.position.x - 1, transform.position.y + 2);
         
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true
                 && x.GetComponentInChildren<BaseRock>().rockColor != rockColor
-                || x.pos == pos && x.isOccupied == false))
+                || x.pos == newPos && x.isOccupied == false))
         {
 
-            GetMark(pos);
+            GetMark(newPos);
 
 
         }
@@ -135,14 +135,14 @@ public class Knight : BaseRock
 
     private void ForwardRightMoveControlForOccupied()
     {
-        var pos = new Vector2(transform.position.x + 1, transform.position.y + 2);
+        newPos = new Vector2(transform.position.x + 1, transform.position.y + 2);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos && x.isOccupied == true
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos && x.isOccupied == true
                         && x.GetComponentInChildren<BaseRock>().rockColor != rockColor
-                        || x.pos == pos && x.isOccupied == false))
+                        || x.pos == newPos && x.isOccupied == false))
         {
 
-            GetMark(pos);
+            GetMark(newPos);
         }
     }
 
@@ -150,119 +150,152 @@ public class Knight : BaseRock
 
     public override void DetermineAllTheNodesItCanGoTo()
     {
-        var pos = new Vector2(transform.position.x + 1, transform.position.y + 2);
+        DetermineForwardRigthMoveControl();
+        DetermineForwardLeftMoveControl();
+        DetermineRightForwardMoveControl();
+        DetermineLeftForwardMoveControl();
+        DetermineBackRightMoveControl();
+        DetermineBackLeftMoveControl();
+        DetermineRightBackMoveControl();
+        DetermineLeftBackMoveControl();
+    }
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
+    private void DetermineLeftBackMoveControl()
+    {
+        newPos = new Vector2(transform.position.x - 2, transform.position.y - 1);
+
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
         {
-            AddFakeMarkToList(pos,GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+            AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
         }
+    }
 
-        pos = new Vector2(transform.position.x - 1, transform.position.y + 2);
+    private void DetermineRightBackMoveControl()
+    {
+        newPos = new Vector2(transform.position.x + 2, transform.position.y - 1);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+            AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
         }
+    }
 
-        pos = new Vector2(transform.position.x + 2, transform.position.y + 1);
+    private void DetermineBackLeftMoveControl()
+    {
+        newPos = new Vector2(transform.position.x - 1, transform.position.y - 2);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+            AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
         }
+    }
 
-        pos = new Vector2(transform.position.x - 2, transform.position.y + 1);
+    private void DetermineBackRightMoveControl()
+    {
+        newPos = new Vector2(transform.position.x + 1, transform.position.y - 2);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+            AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
         }
+    }
 
-        pos = new Vector2(transform.position.x + 1, transform.position.y - 2);
+    private void DetermineLeftForwardMoveControl()
+    {
+        newPos = new Vector2(transform.position.x - 2, transform.position.y + 1);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+            AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
         }
+    }
 
-        pos = new Vector2(transform.position.x - 1, transform.position.y - 2);
+    private void DetermineRightForwardMoveControl()
+    {
+        newPos = new Vector2(transform.position.x + 2, transform.position.y + 1);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+            AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
         }
+    }
 
-        pos = new Vector2(transform.position.x + 2, transform.position.y - 1);
+    private void DetermineForwardLeftMoveControl()
+    {
+        newPos = new Vector2(transform.position.x - 1, transform.position.y + 2);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+            AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
         }
+    }
 
-        pos = new Vector2(transform.position.x - 2, transform.position.y - 1);
+    private void DetermineForwardRigthMoveControl()
+    {
+        newPos = new Vector2(transform.position.x + 1, transform.position.y + 2);
 
-        if (GameManager.Instance.nodesList.Any(x => x.pos == pos))
+        if (GameManager.Instance.nodesList.Any(x => x.pos == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
+            AddFakeMarkToList(newPos, GameManager.Instance.allTheNodesListTheOpponentCanGoTo);
         }
     }
 
     public override void DetermineShahStateMove()
     {
-        var pos = new Vector2(transform.position.x + 1, transform.position.y + 2);
+        newPos = new Vector2(transform.position.x + 1, transform.position.y + 2);
 
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos))
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+            AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
         }
 
-        pos = new Vector2(transform.position.x - 1, transform.position.y + 2);
+        newPos = new Vector2(transform.position.x - 1, transform.position.y + 2);
 
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos))
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+            AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
         }
 
-        pos = new Vector2(transform.position.x + 2, transform.position.y + 1);
+        newPos = new Vector2(transform.position.x + 2, transform.position.y + 1);
 
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos))
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+            AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
         }
 
-        pos = new Vector2(transform.position.x - 2, transform.position.y + 1);
+        newPos = new Vector2(transform.position.x - 2, transform.position.y + 1);
 
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos))
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+            AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
         }
 
-        pos = new Vector2(transform.position.x + 1, transform.position.y - 2);
+        newPos = new Vector2(transform.position.x + 1, transform.position.y - 2);
 
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos))
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+            AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
         }
 
-        pos = new Vector2(transform.position.x - 1, transform.position.y - 2);
+        newPos = new Vector2(transform.position.x - 1, transform.position.y - 2);
 
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos))
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+            AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
         }
 
-        pos = new Vector2(transform.position.x + 2, transform.position.y - 1);
+        newPos = new Vector2(transform.position.x + 2, transform.position.y - 1);
 
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos))
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+            AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
         }
 
-        pos = new Vector2(transform.position.x - 2, transform.position.y - 1);
+        newPos = new Vector2(transform.position.x - 2, transform.position.y - 1);
 
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos))
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos))
         {
-            AddFakeMarkToList(pos, GameManager.Instance.nodesListTheCanGoToShahedState);
+            AddFakeMarkToList(newPos, GameManager.Instance.nodesListTheCanGoToShahedState);
         }
 
 
@@ -272,65 +305,94 @@ public class Knight : BaseRock
 
     public override void ShahStateMove()
     {
-        var pos = new Vector2(transform.position.x + 1, transform.position.y + 2);
-        
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == pos))
-        {
-            GetMark(pos);
-        }
+        ShahStateForwardRightMoveControl();
+        ShahStateForwardLeftMoveControl();
+        ShahStateRightForwardMoveControl();
+        ShahStateLeftForwardMoveControl();
+        ShahStateBackRightMoveControl();
+        ShahStateBackLeftMoveControl();
+        ShahStateRightBackMoveControl();
+        ShahStateLeftBackMoveControl();
+    }
 
-        pos = new Vector2(transform.position.x - 1, transform.position.y + 2);
-
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 1, transform.position.y + 2)))
-        {
-            GetMark(pos);
-        }
-
-        pos = new Vector2(transform.position.x + 2, transform.position.y + 1);
-
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 2, transform.position.y + 1)))
-        {
-            GetMark(pos);
-        }
-
-        pos = new Vector2(transform.position.x - 2, transform.position.y + 1);
-
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 2, transform.position.y + 1)))
-        {
-            GetMark(pos);
-        }
-
-        pos = new Vector2(transform.position.x + 1, transform.position.y - 2);
-
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 1, transform.position.y - 2)))
-        {
-            GetMark(pos);
-        }
-
-        pos = new Vector2(transform.position.x - 1, transform.position.y - 2);
-
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 1, transform.position.y - 2)))
-        {
-            GetMark(pos);
-        }
-
-        pos = new Vector2(transform.position.x + 2, transform.position.y - 1);
-
-        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 2, transform.position.y - 1)))
-        {
-            GetMark(pos);
-        }
-
-        pos = new Vector2(transform.position.x - 2, transform.position.y - 1);
+    private void ShahStateLeftBackMoveControl()
+    {
+        newPos = new Vector2(transform.position.x - 2, transform.position.y - 1);
 
         if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 2, transform.position.y - 1)))
         {
-            GetMark(pos);
+            GetMark(newPos);
         }
-
-        
-
     }
-    
-    
+
+    private void ShahStateRightBackMoveControl()
+    {
+        newPos = new Vector2(transform.position.x + 2, transform.position.y - 1);
+
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 2, transform.position.y - 1)))
+        {
+            GetMark(newPos);
+        }
+    }
+
+    private void ShahStateBackLeftMoveControl()
+    {
+        newPos = new Vector2(transform.position.x - 1, transform.position.y - 2);
+
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 1, transform.position.y - 2)))
+        {
+            GetMark(newPos);
+        }
+    }
+
+    private void ShahStateBackRightMoveControl()
+    {
+        newPos = new Vector2(transform.position.x + 1, transform.position.y - 2);
+
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 1, transform.position.y - 2)))
+        {
+            GetMark(newPos);
+        }
+    }
+
+    private void ShahStateLeftForwardMoveControl()
+    {
+        newPos = new Vector2(transform.position.x - 2, transform.position.y + 1);
+
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 2, transform.position.y + 1)))
+        {
+            GetMark(newPos);
+        }
+    }
+
+    private void ShahStateRightForwardMoveControl()
+    {
+        newPos = new Vector2(transform.position.x + 2, transform.position.y + 1);
+
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x + 2, transform.position.y + 1)))
+        {
+            GetMark(newPos);
+        }
+    }
+
+    private void ShahStateForwardLeftMoveControl()
+    {
+        newPos = new Vector2(transform.position.x - 1, transform.position.y + 2);
+
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == new Vector2(transform.position.x - 1, transform.position.y + 2)))
+        {
+            GetMark(newPos);
+        }
+    }
+
+    private void ShahStateForwardRightMoveControl()
+    {
+        newPos = new Vector2(transform.position.x + 1, transform.position.y + 2);
+
+        if (GameManager.Instance.nodesListBetweenTheKingAndTheThreatenerRock.Any(x => x == newPos))
+        {
+            GetMark(newPos);
+        }
+    }
+
 }

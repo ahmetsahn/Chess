@@ -189,6 +189,7 @@ public abstract class BaseRock : MonoBehaviour
     {
         if (GameManager.Instance.state == GameStates.WaitingForBlackInput && rockColor == RockColor.Black)
         {
+            ReturnToPoolMark();
             GameManager.Instance.selectedRock = this;
             
             ShowNodesItCanGo();
@@ -199,12 +200,18 @@ public abstract class BaseRock : MonoBehaviour
     {
         if (GameManager.Instance.state == GameStates.WaitingForWhiteInput && rockColor == RockColor.White)
         {
+            ReturnToPoolMark();
             GameManager.Instance.selectedRock = this;
-            
+
             ShowNodesItCanGo();
 
 
         }
+    }
+
+    private static void ReturnToPoolMark()
+    {
+        GameObject.FindGameObjectsWithTag("Mark").Select(m => m.GetComponent<Mark>()).ToList().ForEach(MarkPool.Instance.ReturnToPool);
     }
 
     protected bool IsNodeOccupied(Vector2 pos, bool isSameColor)
